@@ -1,0 +1,20 @@
+{
+    "valid_airports": [
+        "SFO", "JFK", "LAX", "ORD", "DFW", "DEN", "SEA", "ATL", "MIA", "BOS",
+        "PHX", "IAH", "LAS", "MCO", "EWR", "CLT", "MSP", "DTW", "PHL", "LGA"
+    ],
+    "dynamic_entity_ids": {
+        "reservations": ["HATHAT", "HATHAU", "HATHAV"]
+    },
+    "system_limits": {
+        "max_new_reservations": 3,
+        "max_new_certificates": 3,
+        "max_new_payments": 3
+    },
+    "db_entity_types": ["users", "flights", "reservations"],
+    "policy_file": "policy.md",
+    "data_model_module": "tau2.domains.airline.data_model",
+    "db_class": "FlightDB",
+    "environment_module": "tau2.domains.airline.environment",
+    "environment_function": "get_environment"
+}

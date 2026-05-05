@@ -1,0 +1,521 @@
+{
+  "model": {
+    "config": {
+      "n": 3,
+      "vocab": [
+        "book_reservation",
+        "calculate",
+        "cancel_reservation",
+        "get_flight_status",
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "send_certificate",
+        "transfer_to_human_agents",
+        "update_reservation_baggages",
+        "update_reservation_flights",
+        "update_reservation_passengers"
+      ],
+      "alpha0": 0.1,
+      "lambda_neg": 0.0,
+      "eps": 1e-12,
+      "bos_token": "|BOS|",
+      "eos_token": "|EOS|"
+    },
+    "counts": {
+      "pos_ngram": {
+        "[[\"|BOS|\", \"|BOS|\"], \"get_user_details\"]": 13.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"get_reservation_details\"]": 11.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"get_reservation_details\"]": 14.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"get_user_details\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"get_reservation_details\"]": 7.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"|EOS|\"]": 4.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"get_reservation_details\"]": 24.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"|EOS|\"]": 6.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"search_direct_flight\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"search_direct_flight\"]": 2.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"search_direct_flight\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"|BOS|\", \"transfer_to_human_agents\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"search_direct_flight\"]": 4.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"search_direct_flight\"]": 4.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"calculate\"]": 1.0,
+        "[[\"search_direct_flight\", \"calculate\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"calculate\", \"update_reservation_baggages\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"get_reservation_details\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"cancel_reservation\"]": 1.0,
+        "[[\"update_reservation_flights\", \"cancel_reservation\"], \"cancel_reservation\"]": 1.0,
+        "[[\"cancel_reservation\", \"cancel_reservation\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"book_reservation\"]": 4.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"cancel_reservation\"]": 1.0,
+        "[[\"get_reservation_details\", \"cancel_reservation\"], \"book_reservation\"]": 1.0,
+        "[[\"cancel_reservation\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"search_direct_flight\", \"update_reservation_flights\"], \"|EOS|\"]": 2.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"update_reservation_flights\"]": 3.0,
+        "[[\"search_direct_flight\", \"update_reservation_flights\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"update_reservation_flights\", \"update_reservation_baggages\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"cancel_reservation\"]": 2.0,
+        "[[\"get_reservation_details\", \"cancel_reservation\"], \"cancel_reservation\"]": 2.0,
+        "[[\"cancel_reservation\", \"cancel_reservation\"], \"cancel_reservation\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"update_reservation_flights\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"update_reservation_flights\", \"update_reservation_flights\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"search_direct_flight\"]": 8.0,
+        "[[\"update_reservation_flights\", \"update_reservation_flights\"], \"update_reservation_flights\"]": 1.0
+      },
+      "pos_ctx": {
+        "[\"|BOS|\", \"|BOS|\"]": 33.0,
+        "[\"|BOS|\", \"get_user_details\"]": 13.0,
+        "[\"get_user_details\", \"get_reservation_details\"]": 11.0,
+        "[\"|BOS|\", \"get_reservation_details\"]": 14.0,
+        "[\"get_reservation_details\", \"get_user_details\"]": 1.0,
+        "[\"get_reservation_details\", \"get_reservation_details\"]": 32.0,
+        "[\"|BOS|\", \"search_direct_flight\"]": 1.0,
+        "[\"get_reservation_details\", \"search_direct_flight\"]": 7.0,
+        "[\"search_direct_flight\", \"book_reservation\"]": 1.0,
+        "[\"|BOS|\", \"transfer_to_human_agents\"]": 1.0,
+        "[\"search_direct_flight\", \"search_direct_flight\"]": 12.0,
+        "[\"search_direct_flight\", \"calculate\"]": 1.0,
+        "[\"calculate\", \"update_reservation_baggages\"]": 1.0,
+        "[\"get_reservation_details\", \"update_reservation_flights\"]": 1.0,
+        "[\"update_reservation_flights\", \"cancel_reservation\"]": 1.0,
+        "[\"cancel_reservation\", \"cancel_reservation\"]": 4.0,
+        "[\"|BOS|\", \"book_reservation\"]": 4.0,
+        "[\"get_reservation_details\", \"cancel_reservation\"]": 3.0,
+        "[\"cancel_reservation\", \"book_reservation\"]": 1.0,
+        "[\"search_direct_flight\", \"update_reservation_flights\"]": 5.0,
+        "[\"update_reservation_flights\", \"update_reservation_baggages\"]": 1.0,
+        "[\"get_reservation_details\", \"update_reservation_passengers\"]": 1.0,
+        "[\"update_reservation_flights\", \"update_reservation_flights\"]": 3.0
+      },
+      "neg_ngram": {},
+      "neg_ctx": {}
+    }
+  },
+  "sampler": {
+    "t": 0,
+    "accepted_set": [
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "cancel_reservation",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "search_direct_flight"
+      ],
+      [
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "book_reservation"
+      ]
+    ],
+    "rejected_set": [],
+    "action_sequence_set": [
+      [
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "get_user_details"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "cancel_reservation",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ]
+    ]
+  },
+  "config": {
+    "domain": "airline",
+    "tau0": 3.0,
+    "tau_decay_steps": 1500.0,
+    "positive_weight": 1.0,
+    "negative_weight": 0.0,
+    "ingest_negatives": false,
+    "length_config": {
+      "mode": "from_seed",
+      "reference_source": "original",
+      "min_length": null,
+      "max_length": null,
+      "gaussian_mean": null,
+      "gaussian_std": null,
+      "skew_alpha": 0.0
+    },
+    "available_actions": [
+      "book_reservation",
+      "calculate",
+      "cancel_reservation",
+      "get_reservation_details",
+      "get_user_details",
+      "list_all_airports",
+      "search_direct_flight",
+      "search_onestop_flight",
+      "send_certificate",
+      "transfer_to_human_agents",
+      "update_reservation_baggages",
+      "update_reservation_flights",
+      "update_reservation_passengers",
+      "get_flight_status"
+    ]
+  },
+  "metadata": {
+    "checkpoint_type": "post_seed",
+    "saved_at": "2026-04-25T09:14:11.207558+00:00",
+    "run_dir": "artifacts/initialized_ngram_models/airline_no_negative_distribution/20260425_121258",
+    "config": {
+      "domain": "airline",
+      "num_samples": 3000,
+      "save_every": 100,
+      "validation_model": "gemini/gemini-3-flash-preview",
+      "max_output_tokens": 32768,
+      "workers": 4,
+      "n": 3,
+      "alpha0": 0.1,
+      "lambda_neg": 0.0,
+      "tau0": 3.0,
+      "tau_decay_steps": 1500.0,
+      "positive_weight": 1.0,
+      "negative_weight": 0.0,
+      "ingest_negatives": false,
+      "load_state": null,
+      "seed_tasks": null,
+      "resuming": false
+    },
+    "training_progress": {
+      "samples_attempted": 0,
+      "accepted_total": 0,
+      "rejected_total": 0,
+      "duplicate_total": 0,
+      "acceptance_rate_overall": null,
+      "current_tau": 3.0,
+      "t": 0,
+      "accepted_set_size": 22
+    },
+    "window_stats": [],
+    "seed_stats": {
+      "total": 50,
+      "valid": 33,
+      "invalid": 10,
+      "skipped": 7,
+      "acceptance_rate": 0.66
+    }
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "book_reservation": {
+    "type": "WRITE",
+    "description": "Book a reservation.",
+    "parameters": {
+      "user_id": {
+        "type": "string",
+        "description": "The ID of the user to book the reservation such as 'sara_doe_496'`."
+      },
+      "origin": {
+        "type": "string",
+        "description": "The IATA code for the origin city such as 'SFO'."
+      },
+      "destination": {
+        "type": "string",
+        "description": "The IATA code for the destination city such as 'JFK'."
+      },
+      "flight_type": {
+        "type": "string",
+        "description": "The type of flight such as 'one_way' or 'round_trip'.",
+        "enum": [
+          "round_trip",
+          "one_way"
+        ]
+      },
+      "cabin": {
+        "type": "string",
+        "description": "The cabin class such as 'basic_economy', 'economy', or 'business'.",
+        "enum": [
+          "business",
+          "economy",
+          "basic_economy"
+        ]
+      },
+      "flights": {
+        "type": "array",
+        "description": "An array of objects containing details about each piece of flight.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "flight_number": {
+              "type": "string",
+              "description": "Flight number, such as 'HAT001'."
+            },
+            "date": {
+              "type": "string",
+              "description": "The date for the flight in the format 'YYYY-MM-DD', such as '2024-05-01'."
+            }
+          },
+          "required": ["flight_number", "date"]
+        }
+      },
+      "passengers": {
+        "type": "array",
+        "description": "An array of objects containing details about each passenger.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "first_name": {
+              "type": "string",
+              "description": "Passenger's first name."
+            },
+            "last_name": {
+              "type": "string",
+              "description": "Passenger's last name."
+            },
+            "dob": {
+              "type": "string",
+              "description": "Date of birth in YYYY-MM-DD format."
+            }
+          },
+          "required": ["first_name", "last_name", "dob"]
+        }
+      },
+      "payment_methods": {
+        "type": "array",
+        "description": "An array of objects containing details about each payment method.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "payment_id": {
+              "type": "string",
+              "description": "Unique identifier for the payment, such as 'credit_card_7815826', 'gift_card_7815826', 'certificate_7815826'."
+            },
+            "amount": {
+              "type": "integer",
+              "description": "Payment amount in dollars."
+            }
+          },
+          "required": ["payment_id", "amount"]
+        }
+      },
+      "total_baggages": {
+        "type": "integer",
+        "description": "The total number of baggage items to book the reservation."
+      },
+      "nonfree_baggages": {
+        "type": "integer",
+        "description": "The number of non-free baggage items to book the reservation."
+      },
+      "insurance": {
+        "type": "string",
+        "description": "Whether the reservation has insurance.",
+        "enum": [
+          "yes",
+          "no"
+        ]
+      }
+    }
+  },
+  "calculate": {
+    "type": "GENERIC",
+    "description": "Calculate the result of a mathematical expression.",
+    "parameters": {
+      "expression": {
+        "type": "string",
+        "description": "The mathematical expression to calculate, such as '2 + 2'. The expression can contain numbers, operators (+, -, *, /), parentheses, and spaces."
+      }
+    }
+  },
+  "cancel_reservation": {
+    "type": "WRITE",
+    "description": "Cancel the whole reservation.",
+    "parameters": {
+      "reservation_id": {
+        "type": "string",
+        "description": "The reservation ID, such as 'ZFA04Y'."
+      }
+    }
+  },
+  "get_reservation_details": {
+    "type": "READ",
+    "description": "Get the details of a reservation.",
+    "parameters": {
+      "reservation_id": {
+        "type": "string",
+        "description": "The reservation ID, such as '8JX2WO'."
+      }
+    }
+  },
+  "get_user_details": {
+    "type": "READ",
+    "description": "Get the details of a user, including their reservations.",
+    "parameters": {
+      "user_id": {
+        "type": "string",
+        "description": "The user ID, such as 'sara_doe_496'."
+      }
+    }
+  },
+  "list_all_airports": {
+    "type": "READ",
+    "description": "Returns a list of all available airports."
+  },
+  "search_direct_flight": {
+    "type": "READ",
+    "description": "Search for direct flights between two cities on a specific date.",
+    "parameters": {
+      "origin": {
+        "type": "string",
+        "description": "The origin city airport in three letters, such as 'JFK'."
+      },
+      "destination": {
+        "type": "string",
+        "description": "The destination city airport in three letters, such as 'LAX'."
+      },
+      "date": {
+        "type": "string",
+        "description": "The date of the flight in the format 'YYYY-MM-DD', such as '2024-01-01'."
+      }
+    }
+  },
+  "search_onestop_flight": {
+    "type": "READ",
+    "description": "Search for one-stop flights between two cities on a specific date.",
+    "parameters": {
+      "origin": {
+        "type": "string",
+        "description": "The origin city airport in three letters, such as 'JFK'."
+      },
+      "destination": {
+        "type": "string",
+        "description": "The destination city airport in three letters, such as 'LAX'."
+      },
+      "date": {
+        "type": "string",
+        "description": "The date of the flight in the format 'YYYY-MM-DD', such as '2024-05-01'."
+      }
+    }
+  },
+  "send_certificate": {
+    "type": "WRITE",
+    "description": "Send a certificate to a user. Be careful!",
+    "parameters": {
+      "user_id": {
+        "type": "string",
+        "description": "The ID of the user to book the reservation, such as 'sara_doe_496'."
+      },
+      "amount": {
+        "type": "integer",
+        "description": "The amount of the certificate to send."
+      }
+    }
+  },
+  "transfer_to_human_agents": {
+    "type": "GENERIC",
+    "description": "Transfer the user to a human agent, with a summary of the user's issue.",
+    "details": "Only transfer if\n -  the user explicitly asks for a human agent\n -  given the policy and the available tools, you cannot solve the user's issue.",
+    "parameters": {
+      "summary": {
+        "type": "string",
+        "description": "A summary of the user's issue."
+      }
+    }
+  },
+  "update_reservation_baggages": {
+    "type": "WRITE",
+    "description": "Update the baggage information of a reservation.",
+    "parameters": {
+      "reservation_id": {
+        "type": "string",
+        "description": "The reservation ID, such as 'ZFA04Y'"
+      },
+      "total_baggages": {
+        "type": "integer",
+        "description": "The updated total number of baggage items included in the reservation."
+      },
+      "nonfree_baggages": {
+        "type": "integer",
+        "description": "The updated number of non-free baggage items included in the reservation."
+      },
+      "payment_id": {
+        "type": "string",
+        "description": "The payment id stored in user profile, such as 'credit_card_7815826', 'gift_card_7815826', 'certificate_7815826'."
+      }
+    }
+  },
+  "update_reservation_flights": {
+    "type": "WRITE",
+    "description": "Update the flight information of a reservation.",
+    "parameters": {
+      "reservation_id": {
+        "type": "string",
+        "description": "The reservation ID, such as 'ZFA04Y'."
+      },
+      "cabin": {
+        "type": "string",
+        "description": "The cabin class of the reservation",
+        "enum": [
+          "business",
+          "economy",
+          "basic_economy"
+        ]
+      },
+      "flights": {
+        "type": "array",
+        "description": "An array of objects containing details about each piece of flight in the ENTIRE new reservation. Even if the a flight segment is not changed, it should still be included in the array.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "flight_number": {
+              "type": "string",
+              "description": "Flight number, such as 'HAT001'."
+            },
+            "date": {
+              "type": "string",
+              "description": "The date for the flight in the format 'YYYY-MM-DD', such as '2024-05-01'."
+            }
+          },
+          "required": ["flight_number", "date"]
+        }
+      },
+      "payment_id": {
+        "type": "string",
+        "description": "The payment id stored in user profile, such as 'credit_card_7815826', 'gift_card_7815826', 'certificate_7815826'."
+      }
+    }
+  },
+  "update_reservation_passengers": {
+    "type": "WRITE",
+    "description": "Update the passenger information of a reservation.",
+    "parameters": {
+      "reservation_id": {
+        "type": "string",
+        "description": "The reservation ID, such as 'ZFA04Y'."
+      },
+      "passengers": {
+        "type": "array",
+        "description": "An array of objects containing details about each passenger.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "first_name": {
+              "type": "string",
+              "description": "Passenger's first name."
+            },
+            "last_name": {
+              "type": "string",
+              "description": "Passenger's last name."
+            },
+            "dob": {
+              "type": "string",
+              "description": "Date of birth in YYYY-MM-DD format."
+            }
+          },
+          "required": ["first_name", "last_name", "dob"]
+        }
+      }
+    }
+  },
+  "get_flight_status": {
+    "type": "READ",
+    "description": "Get the status of a flight.",
+    "parameters": {
+      "flight_number": {
+        "type": "string",
+        "description": "The flight number."
+      },
+      "date": {
+        "type": "string",
+        "description": "The date of the flight."
+      }
+    }
+  }
+}

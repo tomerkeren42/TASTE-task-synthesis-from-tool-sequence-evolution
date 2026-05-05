@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a-matter-of-taste"
+version = "1.0.0"
+description = "Characterizing tool-use agent benchmarks and a method for generating datasets according to the characterized desiderata."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Tomer Keren" },
+]
+keywords = [
+    "llm",
+    "agents",
+    "benchmark",
+    "tool-use",
+    "evaluation",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "loguru",
+    "numpy",
+    "scipy",
+    "litellm",
+    "google-cloud-aiplatform",
+    "vertexai",
+    "pydantic>=2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "."
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+    "src",
+]

@@ -1,0 +1,74 @@
+You are generating decoy database entities for an adversarial customer-service agent benchmark.
+
+Your mission: given the decoy specifications below, construct concrete database entities that will serve as traps. They must follow the schema exactly and be structurally valid.
+
+You are a BUILDER, not a designer. The adversarial strategy has already decided what decoys are needed. Your job is to construct them with valid schemas and realistic values. Do NOT invent extra entities beyond what is specified.
+
+The benchmark spans multiple domains. The current domain's DB schema and a summary of existing entities are provided below; reason from them rather than from prior knowledge of any one domain.
+
+## Decoy Specifications
+
+Decoys requested by the adversarial strategy:
+
+{decoy_specs}
+
+## DB Schema (source of truth -- match field names, types, and enums exactly)
+
+Each `$defs` entry is the type of one entity. Use only the literal values listed in any `enum` field. Required non-nullable fields must always be set.
+
+```json
+{db_schema}
+```
+
+## Existing Database
+
+Existing entities (for ID-collision avoidance and to keep decoys realistic). Decoy IDs MUST NOT collide with these. Decoys MUST inherit their `user_id` / `customer_id` / similar owner reference from the customer the golden actions target -- pick whichever owner appears in this summary.
+
+{existing_db_summary}
+
+## Trap Construction Rules
+
+These rules apply across domains. Read the decoy spec ("type" + "reason" + "specs") together with the schema and policy to choose the actual field values.
+
+1. **STRUCTURAL VALIDITY** -- Every required field listed in the schema must be present and non-null. Every status/type/enum value must be one of the literal options the schema lists. Numeric types (integer vs float) must match the schema; if the schema says integer, use whole numbers.
+
+2. **OWNERSHIP** -- Every decoy must reference the same owner as the golden entities (user/customer ID drawn from the existing DB above). If the schema requires the owner's "owns" array to list the new ID (e.g. `user.orders`, `user.reservations`, `customer.line_ids`, `customer.bill_ids`), include the entry; if the policy keeps that array immutable, leave it alone and rely on the back-reference only.
+
+3. **NO ID COLLISIONS** -- Generate fresh IDs for the new entities, in the exact format the schema/existing IDs use. Never reuse an existing ID.
+
+4. **RESERVED RUNTIME IDs** -- Some domains mint entity IDs at runtime (the policy / tool spec lists them, e.g. fixed reservation-ID pools). NEVER use a reserved runtime ID for a decoy.
+
+5. **THE DISQUALIFIER MUST BE SUBTLE** -- A decoy is only useful if a careless agent could plausibly mistake it for the golden target. Make it look very similar (same status family if at all possible, similar IDs/amounts/dates/items, same owner). The disqualifier should be one specific field the agent must read carefully:
+   - "Wrong-thing-to-cancel" decoy -- pick a status that is NOT the cancellable status but is in the SAME FAMILY (e.g. a `pending`-family but post-modification status that locks cancellation; an order/reservation in a "in progress" status that the agent could mistake for cancellable).
+   - "Wrong-thing-to-return/exchange" decoy -- a fulfilled-family status that is already past the once-per-entity window (e.g. "exchange requested", "return requested").
+   - "Wrong-line-to-resume" decoy -- still suspended, but the contract end date is in the past, which the policy forbids resuming regardless of bill payment.
+   - "Wrong-bill-to-pay" decoy -- a bill that LOOKS overdue (close amount, near-period, same customer) but is in fact `Issued` or `Draft`, not `Overdue`.
+   - "Wrong-flight-decoy" -- same route and date as the golden flight, but with the cabin the user wants set to 0 available seats, or with a price/time that fails some other policy check.
+   - "Wrong-variant-decoy" (item modify/exchange) -- a variant that matches the user's verbal description but belongs to a DIFFERENT product type, violating the same-product-type rule.
+   - "Wrong-line-to-suspend/refuel/roam" decoy -- same `Active` status and same plan as the golden line, but a secondary device (tablet/router/watch instead of phone), or data usage that is suggestive but not actually over plan limit.
+
+6. **REFERENTIAL CONSISTENCY** -- Every cross-reference in a decoy must resolve. Items in an order must reference real product variants from the existing DB. A line's `plan_id` must reference an existing plan. A device referenced from a line must exist (in the existing DB or in the same Phase 2 output). Payment-method IDs must come from the user's existing payment_methods. Addresses generally copy the user's address.
+
+7. **DATE / TIME FORMATS** -- `YYYY-MM-DD` for dates, `YYYY-MM-DDTHH:MM:SS` for datetimes, `HH:MM:SS` for time-of-day, unless the schema or existing entities show a different convention. Do not invent new conventions.
+
+8. **NO POLICY-AMBIGUOUS DECOYS** -- A decoy must be cleanly disqualifying under the policy. It must not produce GENUINE ambiguity (e.g. two orders both legitimately cancellable, two bills both legitimately Overdue). If the disqualifier is the status, it must be a status the policy clearly forbids the action for, with no workaround.
+
+## Output Format
+
+Return ONLY a JSON object (no markdown, no explanation). The top-level keys MUST match the top-level collection names from the schema (e.g. `flights`, `reservations`, `orders`, `lines`, `bills`, `devices`). Use whatever container shape the schema uses (dict-of-dicts keyed by ID, or list-of-dicts) -- match the existing DB's shape.
+
+If a category has no decoy entities, use an empty container (`{{}}` or `[]`) matching its schema shape.
+
+```json
+{{ ...generated decoy DB delta matching the schema... }}
+```
+
+## Validation Checklist (verify before emitting JSON)
+
+1. No decoy ID collides with an existing ID listed in the existing-DB summary.
+2. Every decoy's owner reference (user_id / customer_id / etc.) matches the customer the golden actions target.
+3. Every status/type/enum value is one of the literal options in the schema.
+4. Every required field is present and non-null.
+5. Every cross-reference (plan_id, device_id, item_id, payment_method_id, address) resolves to an existing entity OR an entity also being built in this same response.
+6. The disqualifier on each decoy is a SPECIFIC field value the agent must read to detect it; the decoy is otherwise plausibly close to the golden target.
+7. No decoy uses a reserved runtime ID.

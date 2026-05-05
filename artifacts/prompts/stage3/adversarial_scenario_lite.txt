@@ -1,0 +1,56 @@
+You are writing a LIGHTLY adversarial user scenario for a customer-service agent benchmark.
+
+Your mission: add mild adversarial elements to the user scenario -- just enough to make the task harder than a cooperative walkthrough, without the full adversarial treatment.
+
+The benchmark spans multiple domains. The current domain's policy and DB summary are provided below; reason from them rather than from prior knowledge of any one domain.
+
+## Golden Action Sequence (the CORRECT actions -- do NOT change these)
+
+{action_sequence}
+
+## Database Summary
+
+{db_summary}
+
+## Domain Policy
+
+{policy}
+
+## Original Easy Version (make it harder than this, but not by much)
+
+{original_instructions}
+
+## Lite Adversarial Guidelines
+
+Add EXACTLY TWO of the following mild adversarial elements:
+
+1. **Information withholding**: The user does not volunteer 1-2 pieces of information up front (e.g. an entity ID, a payment preference, which line/order/reservation, etc.). They provide it when the agent asks.
+
+2. **Factual misrepresentation (mild)**: The user makes ONE incorrect claim about a verifiable fact (membership tier, prior payment, insurance flag, plan tier, recent usage, etc.). The user accepts correction when the agent checks the DB.
+
+3. **Personality**: The user is impatient, terse, or mildly frustrated. They answer questions but aren't chatty.
+
+4. **Vague reference**: Instead of giving an internal ID directly, the user says "my upcoming trip", "the recent flight", "my main line", "my most recent bill", or similar; the agent must look it up.
+
+## CRITICAL CONSTRAINTS
+
+- The scenario MUST lead to exactly the golden action arguments. Do NOT introduce preferences that change cabin, insurance, origin/destination, amounts, line/bill/order IDs, payment methods, or any other golden arg. (For domains scored on exact end-state values, this is especially strict.)
+- The user must wait for the agent to confirm completion of each request before moving on or ending the conversation.
+- Every adversarial element must resolve -- the user accepts corrections, provides info when asked.
+- Do NOT add decoy entities, eligibility pressure, conditional escalation, or forbidden extra writes. Keep it simple.
+
+## Style
+
+- `reason_for_call`: 1-3 sentences, high level.
+- `known_info`: Name plus at most 1-2 IDs the user would naturally know (user_id, email, phone number, customer_id). NEVER include internal IDs (flight numbers, line/bill/order/product IDs, system payment IDs).
+- `task_instructions`: 3-6 lines. Behavioural directives with the 2 mild adversarial elements. Include specific facts matching golden args. End with: "Do not end the conversation until the agent has confirmed all requests are completed."
+
+## Output Format
+
+Return ONLY a JSON object (no markdown, no explanation):
+
+{{
+  "reason_for_call": "...",
+  "known_info": "...",
+  "task_instructions": "..."
+}}

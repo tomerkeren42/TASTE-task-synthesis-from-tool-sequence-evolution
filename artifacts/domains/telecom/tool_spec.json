@@ -1,0 +1,374 @@
+{
+  "get_customer_by_phone": {
+    "type": "READ",
+    "actor": "agent",
+    "description": "Finds a customer by their primary contact or line phone number.",
+    "parameters": {
+      "phone_number": {
+        "type": "string",
+        "description": "The phone number to search for, such as '555-123-4567'."
+      }
+    }
+  },
+  "get_customer_by_id": {
+    "type": "READ",
+    "actor": "agent",
+    "description": "Retrieves a customer directly by their unique customer ID.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer, starting with 'C', such as 'C12345'."
+      }
+    }
+  },
+  "get_customer_by_name": {
+    "type": "READ",
+    "actor": "agent",
+    "description": "Searches for customers by full name and date of birth. May return multiple matches if names are similar; DOB helps disambiguate.",
+    "parameters": {
+      "full_name": {
+        "type": "string",
+        "description": "The full name of the customer, such as 'Jane Smith'."
+      },
+      "dob": {
+        "type": "string",
+        "description": "Date of birth for verification, in the format YYYY-MM-DD, such as '1990-05-15'."
+      }
+    }
+  },
+  "get_details_by_id": {
+    "type": "READ",
+    "actor": "agent",
+    "description": "Retrieves the details for a given ID. The ID must be a valid ID for a Customer (C...), Line (L...), Device (D...), Bill (B...), or Plan (P...).",
+    "parameters": {
+      "id": {
+        "type": "string",
+        "description": "The ID of the object to retrieve. Must start with C (customer), L (line), D (device), B (bill), or P (plan)."
+      }
+    }
+  },
+  "get_bills_for_customer": {
+    "type": "READ",
+    "actor": "agent",
+    "description": "Retrieves a list of the customer's bills, most recent first.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer, starting with 'C'."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of bills to return. Defaults to 12."
+      }
+    }
+  },
+  "get_data_usage": {
+    "type": "READ",
+    "actor": "agent",
+    "description": "Retrieves current billing cycle data usage for a line, including data used, data limit, refueling amount, and cycle end date.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the line."
+      },
+      "line_id": {
+        "type": "string",
+        "description": "The unique identifier of the line to check usage for, starting with 'L'."
+      }
+    }
+  },
+  "suspend_line": {
+    "type": "WRITE",
+    "actor": "agent",
+    "description": "Suspends a specific line (max 6 months). Line must be Active. Sets line status to Suspended and records suspension start date. A $5/month holding fee applies.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the line."
+      },
+      "line_id": {
+        "type": "string",
+        "description": "The unique identifier of the line to suspend, starting with 'L'."
+      },
+      "reason": {
+        "type": "string",
+        "description": "The reason for suspension, such as 'Lost phone' or 'Traveling abroad'."
+      }
+    }
+  },
+  "resume_line": {
+    "type": "WRITE",
+    "actor": "agent",
+    "description": "Resumes a suspended or pending-activation line. Sets line status to Active and clears the suspension start date.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the line."
+      },
+      "line_id": {
+        "type": "string",
+        "description": "The unique identifier of the line to resume, starting with 'L'."
+      }
+    }
+  },
+  "enable_roaming": {
+    "type": "WRITE",
+    "actor": "agent",
+    "description": "Enables international roaming on a line, allowing the line to use data and services when abroad.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the line."
+      },
+      "line_id": {
+        "type": "string",
+        "description": "The unique identifier of the line to enable roaming for, starting with 'L'."
+      }
+    }
+  },
+  "disable_roaming": {
+    "type": "WRITE",
+    "actor": "agent",
+    "description": "Disables international roaming on a line.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the line."
+      },
+      "line_id": {
+        "type": "string",
+        "description": "The unique identifier of the line to disable roaming for, starting with 'L'."
+      }
+    }
+  },
+  "refuel_data": {
+    "type": "WRITE",
+    "actor": "agent",
+    "description": "Adds extra data to a specific line for the current billing cycle, charging the customer based on the plan's refueling rate per GB.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the line."
+      },
+      "line_id": {
+        "type": "string",
+        "description": "The unique identifier of the line to refuel data for, starting with 'L'."
+      },
+      "gb_amount": {
+        "type": "number",
+        "description": "Amount of data to add in gigabytes. Must be a positive number."
+      }
+    }
+  },
+  "send_payment_request": {
+    "type": "WRITE",
+    "actor": "agent",
+    "description": "Sends a payment request to the customer for a specific bill. Sets bill status to AWAITING_PAYMENT. Only one bill can be awaiting payment at a time. Always verify the bill is not already paid before calling this.",
+    "parameters": {
+      "customer_id": {
+        "type": "string",
+        "description": "The unique identifier of the customer who owns the bill."
+      },
+      "bill_id": {
+        "type": "string",
+        "description": "The unique identifier of the bill to send a payment request for, starting with 'B'."
+      }
+    }
+  },
+  "transfer_to_human_agents": {
+    "type": "GENERIC",
+    "actor": "agent",
+    "description": "Transfer the user to a human agent, with a summary of the user's issue. Only transfer if the user explicitly asks for a human agent, or if the policy and available tools cannot resolve the issue.",
+    "parameters": {
+      "summary": {
+        "type": "string",
+        "description": "A summary of the user's issue."
+      }
+    }
+  },
+  "check_status_bar": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Shows what icons are currently visible in the phone's status bar (the area at the top of the screen). Displays network signal strength, mobile data status (enabled, disabled, data saver), Wi-Fi status, and battery level."
+  },
+  "check_network_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks the phone's connection status to cellular networks and Wi-Fi. Shows airplane mode status, SIM card status, signal strength, network type (2G/3G/4G/5G), whether mobile data is enabled, whether data roaming is enabled, and Wi-Fi status."
+  },
+  "check_network_mode_preference": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Shows the current network mode preference setting (e.g., 4G/5G preferred, 4G only, 3G only, 2G only)."
+  },
+  "set_network_mode_preference": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Changes the type of cellular network the phone prefers to connect to (e.g., 5G, LTE/4G, 3G). Higher-speed networks provide faster data but may use more battery. Valid modes: '4g_5g_preferred', '4g_only', '3g_only', '2g_only'.",
+    "parameters": {
+      "mode": {
+        "type": "string",
+        "description": "The network mode preference to set. Must be one of: '4g_5g_preferred', '4g_only', '3g_only', '2g_only'.",
+        "enum": ["4g_5g_preferred", "4g_only", "3g_only", "2g_only"]
+      }
+    }
+  },
+  "run_speed_test": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Measures the current internet connection speed (download speed). Provides information about connection quality and what activities it can support."
+  },
+  "toggle_airplane_mode": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Toggles Airplane Mode ON or OFF. When ON, disconnects all wireless communications including cellular, Wi-Fi, and Bluetooth. Returns the new state of airplane mode."
+  },
+  "check_sim_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks if the SIM card is working correctly and displays its current status. Shows if the SIM is active, missing, or locked with a PIN or PUK code."
+  },
+  "reseat_sim_card": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Simulates removing and reinserting the SIM card. This can help resolve SIM recognition issues by re-seating the physical card."
+  },
+  "toggle_data": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Toggles the phone's mobile data connection ON or OFF. Controls whether the phone can use cellular data for internet access when Wi-Fi is unavailable. Returns the new data connection status."
+  },
+  "toggle_roaming": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Toggles Data Roaming ON or OFF on the device. When ON, the phone can use data networks in areas outside the carrier's coverage. Returns the new data roaming status."
+  },
+  "check_data_restriction_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks if the phone has any data-limiting features active. Shows if Data Saver mode is on."
+  },
+  "toggle_data_saver_mode": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Toggles Data Saver mode ON or OFF. When ON, reduces data usage, which may also reduce data speed. Returns the new data saver mode status."
+  },
+  "check_apn_settings": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks the technical APN settings the phone uses to connect to the carrier's mobile data network. Shows current APN name and MMSC URL for picture messaging."
+  },
+  "set_apn_settings": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Sets the APN (Access Point Name) settings for the phone. Used to configure how the phone connects to the mobile data network.",
+    "parameters": {
+      "apn_settings": {
+        "type": "object",
+        "description": "APN settings object with fields: 'apn_name' (string, one of 'internet' or 'broken') and optionally 'mmsc_url' (string, the MMSC URL for MMS messaging)."
+      }
+    }
+  },
+  "reset_apn_settings": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Resets APN settings to the default carrier settings. The reset will be applied at the next reboot."
+  },
+  "check_wifi_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks Wi-Fi connection status. Shows if Wi-Fi is turned on, which network the phone is connected to (if any), and the signal strength."
+  },
+  "toggle_wifi": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Toggles the phone's Wi-Fi radio ON or OFF. Controls whether the phone can discover and connect to wireless networks. Returns the new Wi-Fi status. Cannot be changed while Airplane Mode is ON."
+  },
+  "check_wifi_calling_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks if Wi-Fi Calling is enabled on the device. This feature allows making and receiving calls over a Wi-Fi network instead of the cellular network."
+  },
+  "toggle_wifi_calling": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Toggles Wi-Fi Calling ON or OFF. Allows making and receiving calls over Wi-Fi instead of the cellular network, helpful in areas with weak cellular signal. Returns the new Wi-Fi Calling status."
+  },
+  "check_vpn_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks if a VPN (Virtual Private Network) connection is active. Shows if a VPN is enabled, connected, and displays connection details."
+  },
+  "connect_vpn": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Connects to the configured VPN (Virtual Private Network). Uses default VPN connection details."
+  },
+  "disconnect_vpn": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Disconnects any active VPN (Virtual Private Network) connection. Stops routing internet traffic through the VPN server."
+  },
+  "check_installed_apps": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Returns the names of all installed apps on the phone."
+  },
+  "check_app_status": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks detailed information about a specific app. Shows its permissions and background data usage settings.",
+    "parameters": {
+      "app_name": {
+        "type": "string",
+        "description": "The name of the app to check, such as 'messaging' or 'browser'."
+      }
+    }
+  },
+  "check_app_permissions": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks what permissions a specific app currently has. Shows if the app has access to features like storage, camera, location, SMS, etc.",
+    "parameters": {
+      "app_name": {
+        "type": "string",
+        "description": "The name of the app to check permissions for, such as 'messaging' or 'camera'."
+      }
+    }
+  },
+  "grant_app_permission": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Gives a specific permission to an app (like access to storage, camera, location, or SMS). Required for some app functions to work properly.",
+    "parameters": {
+      "app_name": {
+        "type": "string",
+        "description": "The name of the app to grant the permission to, such as 'messaging'."
+      },
+      "permission": {
+        "type": "string",
+        "description": "The permission to grant, in lowercase, such as 'storage', 'camera', 'location', or 'sms'."
+      }
+    }
+  },
+  "can_send_mms": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks if the default messaging app can send MMS (picture/multimedia) messages. Requires active mobile data, network 3G or higher, correct APN/MMSC settings, and messaging app with storage and SMS permissions."
+  },
+  "reboot_device": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Restarts the phone completely. Can resolve many temporary software glitches by refreshing all running services and connections. Also applies any pending APN setting resets."
+  },
+  "check_payment_request": {
+    "type": "READ",
+    "actor": "user",
+    "description": "Checks if the agent has sent a payment request. Returns the bill ID and amount due if a payment request is pending."
+  },
+  "make_payment": {
+    "type": "WRITE",
+    "actor": "user",
+    "description": "Makes a payment for the bill that the agent has sent via a payment request. Requires a prior payment request to have been sent by the agent."
+  }
+}

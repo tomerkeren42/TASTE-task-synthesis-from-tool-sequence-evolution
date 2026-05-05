@@ -1,0 +1,69 @@
+You are generating environment assertions for a telecom benchmark task.
+
+The golden action sequence has ALREADY been replayed on a fresh environment. You are given the resulting END STATE. Your job is to output a JSON array of EnvAssertion objects that verify salient properties of that end state. Because they are derived from the observed end state, they MUST hold — just read values directly from the state JSON.
+
+# CLOSED VOCABULARY
+
+You may ONLY use the assertion functions below. Each is namespaced by `env_type` ("assistant" runs against the agent-side TelecomTools backend; "user" runs against the user-side TelecomUserTools device state).
+
+## env_type = "assistant" (4 functions)
+
+- `assert_data_refueling_amount(customer_id: str, line_id: str, expected_amount: float) -> bool`
+  Reads from `assistant_state.lines[line_id].data_refueling_gb`. Use when that value is > 0.
+- `assert_line_status(customer_id: str, line_id: str, expected_status: str) -> bool`
+  Reads from `assistant_state.lines[line_id].status`. `expected_status` is one of: "Active", "Suspended", "Pending Activation", "Closed". Copy the observed status verbatim.
+- `assert_overdue_bill_exists(customer_id: str, overdue_bill_id: str) -> bool`
+  Reads from `assistant_state.bills[bill_id].status == "Overdue"`. Use only when a bill is still overdue at end state.
+- `assert_no_overdue_bill(overdue_bill_id: str) -> bool`
+  Use when a bill that was overdue is now "Paid" (or absent from `assistant_state.bills`).
+
+## env_type = "user" (9 functions)
+
+- `assert_airplane_mode_status(expected_status: bool)` — reads `user_state.device.airplane_mode`.
+- `assert_service_status(expected_status: str)` — reads `user_state.device.network_connection_status`. One of: "connected", "no_service", "limited". Copy verbatim.
+- `assert_mobile_data_status(expected_status: bool)` — matches `derived.mobile_data_working`.
+- `assert_mobile_roaming_status(expected_status: bool)` — reads `user_state.device.roaming_enabled`.
+- `assert_mobile_data_saver_mode_status(expected_status: bool)` — reads `user_state.device.data_saver_mode`.
+- `assert_internet_speed(expected_speed: float, expected_desc: Optional[str] = None)` — matches `derived.speed_test` which is `[speed, desc]`. Only use `expected_desc` if it matches exactly (case-insensitive).
+- `assert_internet_not_excellent()` — use when `derived.speed_test[1]` != "excellent".
+- `assert_can_send_mms(expected_status: bool)` — matches `derived.can_send_mms`.
+- `assert_mobile_data_usage_exceeded(expected_status: bool)` — reads `user_state.surroundings.mobile_data_usage_exceeded`.
+
+# RULES
+
+1. Use ONLY functions from the vocabulary above. Argument names must match the listed signatures exactly.
+2. READ VALUES FROM `end_state` JSON. Do not guess, do not invent, do not infer from the user scenario. If an observed value does not match a canonical success pattern, ASSERT WHAT YOU OBSERVE. The observed end state is the ground truth, not the user's stated goal.
+3. Cover the salient properties of the end state — state fields that the golden actions actually changed, plus key status fields. Prefer fewer, stronger assertions over many weak ones. 2-4 assertions is typical.
+4. MIRROR WRITE-ACTION ARGS LITERALLY when applicable. For `refuel_data`, `suspend_line`, `resume_line`, `send_payment_request` + `make_payment`: copy `customer_id`, `line_id`, `bill_id` from the action args and the matching value from `end_state`.
+5. Avoid redundancy: do not assert two functions that read the same underlying field (e.g., both `assert_mobile_data_status` AND `assert_internet_speed` if the state clearly shows no connectivity).
+6. Return at least one assertion. If the end state shows no meaningful change (no write actions had effect), return the single most informative assertion about the observed state.
+7. Output ONLY the JSON array — no prose, no markdown fences.
+
+# TASK CONTEXT
+
+User scenario (for reference only — DO NOT derive assertions from it; derive from `end_state`):
+{user_scenario}
+
+Golden actions (already replayed on the env):
+{golden_actions}
+
+# END STATE (ground truth)
+
+This is the observed environment state AFTER replaying the golden actions. Read assertion values directly from here.
+
+```json
+{end_state}
+```
+
+{prev_failures_block}
+
+# OUTPUT
+
+Output a JSON array of EnvAssertion objects. Each object has shape:
+
+[
+  {{"env_type": "user", "func_name": "assert_mobile_data_status",
+    "arguments": {{"expected_status": true}}, "message": null}}
+]
+
+The "message" field is optional and may be omitted or null.

@@ -1,0 +1,71 @@
+You are refining a tau2-bench telecom task's user_scenario so it matches the end-state that the golden action sequence actually produces.
+
+Tasks fail when the user-LLM is told to pursue a goal (e.g., "my data isn't working, fix it") but the golden actions leave the device in a state that doesn't achieve that goal (e.g., `service='no_service'`, `mobile_data_working=False`). Your job is to rewrite `reason_for_call`, `known_info`, and `task_instructions` so a cooperative user-LLM will naturally steer the conversation toward exactly the observed end-state — and not fight the agent by demanding something inconsistent with it.
+
+## Inputs
+
+**Identity (must be preserved in known_info):**
+- name: {identity_name}
+- phone_number: {identity_phone}
+- customer_id: {identity_customer_id}
+- line_id: {identity_line_id}
+- bill_ids (if any): {identity_bill_ids}
+
+**Initial state (relevant fields):**
+- line status at start: {line_status_start}
+- device at start: service={service_start!r}, airplane={airplane_start}, data_enabled={data_enabled_start}, roaming_enabled={roaming_start}, apn_name={apn_start!r}
+- surroundings at start: is_abroad={is_abroad}, roaming_allowed={roaming_allowed}, mobile_data_usage_exceeded={data_exceeded}, signal_4g={signal_4g}, signal_5g={signal_5g}
+
+**Golden action sequence (authoritative — do not modify):**
+{golden_actions_block}
+
+**Gold-env END state after replaying these actions:**
+- line status: {line_status_end}
+- device: service={service_end!r}, airplane={airplane_end}, data_enabled={data_enabled_end}, roaming_enabled={roaming_end}, apn_name={apn_end!r}
+- derived: mobile_data_working={mobile_data_working_end}, can_send_mms={can_send_mms_end}, speed_test={speed_end}
+
+**Env_assertions the task will be graded on:**
+{assertions_block}
+
+**Current (possibly misaligned) scenario:**
+- reason_for_call: {current_reason}
+- known_info: {current_known_info}
+- task_instructions: {current_instructions}
+
+## Rules
+
+1. **Align intent with end-state.**
+   - If end-state has `service='no_service'` AND line is `Suspended`: the user is initiating or accepting a suspension (lost phone / vacation / switching to local SIM / canceling). Don't frame as "restore service".
+   - If end-state has `service='no_service'` but line is `Active`: the device needs device-side steps the golden actions didn't include (e.g., user ran out of action budget before toggling roaming on device while abroad). Frame as "user made progress but acknowledges some things still aren't fully resolved — the conversation ends after the golden actions complete" (valid if goldens end with `transfer_to_human_agents` OR the scenario naturally closes after the last action).
+   - If end-state has `airplane_mode=True`: the user is preparing for travel / quiet hours / intentionally enabled airplane mode. Don't frame as "restore mobile service".
+   - If end-state has `mobile_data_working=False` but `service='connected'`: the scenario should be about a DATA-specific issue (overage, MMS, app, roaming-while-abroad). Do NOT say "my internet doesn't work at all".
+
+2. **Preserve identity fields** exactly in the new `known_info`. You may reformat for clarity. The customer_id / line_id / bill_ids must appear verbatim if they appear in the golden actions' arguments.
+
+3. **Script user intent in an order that matches the golden actions.** The user should raise each intent (suspend, pay bill, refuel, troubleshoot) in a message ordering that lets the agent perform the actions in the golden order. Include exact quantities for refuel amounts, exact bill IDs, etc.
+
+4. **`task_instructions` MUST contain** (verbatim; copy exactly):
+   - "Wait for the agent to confirm completion of each action before requesting the next one or changing your mind. CRITICAL: Do NOT end the conversation in the same message where you confirm or agree to an action. After you confirm an action, you MUST wait for the agent's response confirming completion before you may end the conversation. Only end the conversation AFTER the agent has explicitly confirmed ALL requested actions are done."
+   - "Whenever the agent asks you about your device, always ground your responses on the results of tool calls. Never make up the results of tool calls, always ground your responses on the results of tool calls."
+
+5. **Conditional required phrases** (include only if applicable):
+   - If `make_payment` is in goldens: "After the agent sends the payment request, you MUST complete the payment by calling make_payment on your device. Simply acknowledging that the agent sent the request is NOT sufficient — you must tap/accept to complete the payment. Do not end the conversation until the agent confirms the bill is now Paid."
+   - If `reboot_device` follows `resume_line` in goldens: "After the agent resumes your line, you MUST reboot your device (call reboot_device) so the network can reconnect."
+   - If goldens end with `transfer_to_human_agents`: explicitly script a reason for the user to request a human agent AFTER all prior actions are done (e.g., file a complaint, request supervisor, unresolved residual issue). Make sure the reason fits the scenario.
+
+6. **Do not introduce blockers.** The user must not refuse an action the agent correctly initiates. The user must not demand an action not in the goldens.
+
+7. **Quantitative fidelity.** Any refuel amount, bill id, or reason_for_suspension in goldens must be realized by the user's intent in the scenario.
+
+## Output
+
+Return ONLY a JSON object with this exact shape. NO markdown fences, NO prose outside the JSON:
+
+{{
+  "reason_for_call": "...",
+  "known_info": "...",
+  "task_instructions": "...",
+  "description_purpose": "One sentence: what this task tests. E.g., 'Test whether the agent handles a vacation-hold suspension while resolving the user's concerns about a pending bill.'"
+}}
+
+Keep `task_instructions` under ~400 words. Be specific. Inline example arguments for any user-side actions that take arguments.

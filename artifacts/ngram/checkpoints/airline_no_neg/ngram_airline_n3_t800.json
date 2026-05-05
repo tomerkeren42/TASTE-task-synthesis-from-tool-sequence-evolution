@@ -1,0 +1,4106 @@
+{
+  "model": {
+    "config": {
+      "n": 3,
+      "vocab": [
+        "book_reservation",
+        "calculate",
+        "cancel_reservation",
+        "get_flight_status",
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "send_certificate",
+        "transfer_to_human_agents",
+        "update_reservation_baggages",
+        "update_reservation_flights",
+        "update_reservation_passengers"
+      ],
+      "alpha0": 0.1,
+      "lambda_neg": 0.0,
+      "eps": 1e-12,
+      "bos_token": "|BOS|",
+      "eos_token": "|EOS|"
+    },
+    "counts": {
+      "pos_ngram": {
+        "[[\"|BOS|\", \"|BOS|\"], \"get_user_details\"]": 60.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"get_reservation_details\"]": 22.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"get_reservation_details\"]": 85.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"get_user_details\"]": 11.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"|EOS|\"]": 4.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"get_reservation_details\"]": 9.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"|EOS|\"]": 8.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"get_reservation_details\"]": 29.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"|EOS|\"]": 6.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"search_direct_flight\"]": 16.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"search_direct_flight\"]": 2.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"book_reservation\"]": 4.0,
+        "[[\"search_direct_flight\", \"book_reservation\"], \"|EOS|\"]": 6.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"|BOS|\", \"transfer_to_human_agents\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"search_direct_flight\"]": 12.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"search_direct_flight\"]": 6.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"calculate\"]": 3.0,
+        "[[\"search_direct_flight\", \"calculate\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"calculate\", \"update_reservation_baggages\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"get_reservation_details\"]": 6.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"cancel_reservation\"]": 2.0,
+        "[[\"update_reservation_flights\", \"cancel_reservation\"], \"cancel_reservation\"]": 1.0,
+        "[[\"cancel_reservation\", \"cancel_reservation\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"book_reservation\"]": 34.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"cancel_reservation\"]": 2.0,
+        "[[\"get_reservation_details\", \"cancel_reservation\"], \"book_reservation\"]": 1.0,
+        "[[\"cancel_reservation\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"search_direct_flight\", \"update_reservation_flights\"], \"|EOS|\"]": 2.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"update_reservation_flights\"]": 3.0,
+        "[[\"search_direct_flight\", \"update_reservation_flights\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"update_reservation_flights\", \"update_reservation_baggages\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"cancel_reservation\"]": 3.0,
+        "[[\"get_reservation_details\", \"cancel_reservation\"], \"cancel_reservation\"]": 2.0,
+        "[[\"cancel_reservation\", \"cancel_reservation\"], \"cancel_reservation\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"update_reservation_passengers\"]": 6.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"|EOS|\"]": 3.0,
+        "[[\"search_direct_flight\", \"update_reservation_flights\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"update_reservation_flights\", \"update_reservation_flights\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"search_direct_flight\"]": 12.0,
+        "[[\"update_reservation_flights\", \"update_reservation_flights\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"list_all_airports\"]": 33.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"send_certificate\"]": 7.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"get_flight_status\"]": 1.0,
+        "[[\"send_certificate\", \"get_flight_status\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_flight_status\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"calculate\"]": 8.0,
+        "[[\"book_reservation\", \"calculate\"], \"get_reservation_details\"]": 4.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"book_reservation\"]": 5.0,
+        "[[\"get_user_details\", \"book_reservation\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"search_direct_flight\"]": 3.0,
+        "[[\"list_all_airports\", \"search_direct_flight\"], \"|EOS|\"]": 5.0,
+        "[[\"list_all_airports\", \"search_direct_flight\"], \"book_reservation\"]": 4.0,
+        "[[\"search_direct_flight\", \"book_reservation\"], \"list_all_airports\"]": 3.0,
+        "[[\"book_reservation\", \"list_all_airports\"], \"get_flight_status\"]": 1.0,
+        "[[\"list_all_airports\", \"get_flight_status\"], \"get_reservation_details\"]": 1.0,
+        "[[\"get_flight_status\", \"get_reservation_details\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"get_reservation_details\", \"transfer_to_human_agents\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"calculate\"]": 22.0,
+        "[[\"|BOS|\", \"calculate\"], \"search_onestop_flight\"]": 2.0,
+        "[[\"calculate\", \"search_onestop_flight\"], \"get_user_details\"]": 3.0,
+        "[[\"search_onestop_flight\", \"get_user_details\"], \"|EOS|\"]": 5.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"get_flight_status\"]": 10.0,
+        "[[\"|BOS|\", \"get_flight_status\"], \"get_reservation_details\"]": 3.0,
+        "[[\"get_flight_status\", \"get_reservation_details\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_onestop_flight\"], \"|EOS|\"]": 6.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"list_all_airports\"]": 5.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"list_all_airports\"]": 2.0,
+        "[[\"book_reservation\", \"list_all_airports\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"update_reservation_baggages\"]": 3.0,
+        "[[\"get_reservation_details\", \"update_reservation_baggages\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"transfer_to_human_agents\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"calculate\"]": 5.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"list_all_airports\"]": 3.0,
+        "[[\"calculate\", \"list_all_airports\"], \"calculate\"]": 1.0,
+        "[[\"list_all_airports\", \"calculate\"], \"search_onestop_flight\"]": 2.0,
+        "[[\"search_onestop_flight\", \"get_user_details\"], \"search_onestop_flight\"]": 3.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"cancel_reservation\"]": 1.0,
+        "[[\"search_onestop_flight\", \"cancel_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"get_user_details\"]": 6.0,
+        "[[\"book_reservation\", \"get_user_details\"], \"|EOS|\"]": 6.0,
+        "[[\"search_direct_flight\", \"book_reservation\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"book_reservation\", \"search_onestop_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"get_reservation_details\"]": 12.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"get_reservation_details\"]": 3.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"calculate\"]": 5.0,
+        "[[\"list_all_airports\", \"calculate\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"|BOS|\"], \"search_onestop_flight\"]": 16.0,
+        "[[\"|BOS|\", \"search_onestop_flight\"], \"get_user_details\"]": 4.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"calculate\"]": 3.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"get_reservation_details\"]": 1.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"get_flight_status\"]": 3.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"get_user_details\"]": 1.0,
+        "[[\"get_flight_status\", \"get_user_details\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"search_direct_flight\"]": 2.0,
+        "[[\"send_certificate\", \"search_direct_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"list_all_airports\"]": 6.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"list_all_airports\"]": 2.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"book_reservation\"]": 3.0,
+        "[[\"list_all_airports\", \"book_reservation\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"book_reservation\", \"update_reservation_flights\"], \"calculate\"]": 1.0,
+        "[[\"update_reservation_flights\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"book_reservation\"]": 6.0,
+        "[[\"list_all_airports\", \"book_reservation\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_user_details\", \"book_reservation\"], \"get_user_details\"]": 4.0,
+        "[[\"book_reservation\", \"get_user_details\"], \"send_certificate\"]": 2.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"search_onestop_flight\"]": 6.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"list_all_airports\"]": 2.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"send_certificate\"]": 1.0,
+        "[[\"list_all_airports\", \"send_certificate\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"cancel_reservation\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"get_flight_status\"]": 10.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"send_certificate\"]": 1.0,
+        "[[\"get_flight_status\", \"send_certificate\"], \"get_user_details\"]": 1.0,
+        "[[\"send_certificate\", \"get_user_details\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"list_all_airports\", \"search_onestop_flight\"], \"list_all_airports\"]": 4.0,
+        "[[\"search_onestop_flight\", \"list_all_airports\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"list_all_airports\", \"update_reservation_passengers\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"search_onestop_flight\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"search_onestop_flight\", \"transfer_to_human_agents\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"get_flight_status\"], \"search_onestop_flight\"]": 3.0,
+        "[[\"get_flight_status\", \"search_onestop_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"calculate\"], \"get_reservation_details\"]": 9.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"send_certificate\"]": 3.0,
+        "[[\"send_certificate\", \"send_certificate\"], \"book_reservation\"]": 1.0,
+        "[[\"send_certificate\", \"book_reservation\"], \"get_user_details\"]": 1.0,
+        "[[\"|BOS|\", \"calculate\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"calculate\", \"transfer_to_human_agents\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"get_reservation_details\"]": 6.0,
+        "[[\"book_reservation\", \"get_reservation_details\"], \"list_all_airports\"]": 2.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"get_flight_status\"]": 1.0,
+        "[[\"list_all_airports\", \"get_flight_status\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"get_flight_status\", \"update_reservation_passengers\"], \"book_reservation\"]": 2.0,
+        "[[\"update_reservation_passengers\", \"book_reservation\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"book_reservation\", \"update_reservation_flights\"], \"get_flight_status\"]": 1.0,
+        "[[\"update_reservation_flights\", \"get_flight_status\"], \"|EOS|\"]": 3.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"get_flight_status\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"|EOS|\"]": 6.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"search_direct_flight\"]": 6.0,
+        "[[\"get_user_details\", \"search_direct_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"list_all_airports\"]": 3.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"send_certificate\"]": 2.0,
+        "[[\"list_all_airports\", \"send_certificate\"], \"get_flight_status\"]": 1.0,
+        "[[\"send_certificate\", \"get_flight_status\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"get_flight_status\", \"update_reservation_flights\"], \"get_reservation_details\"]": 2.0,
+        "[[\"update_reservation_flights\", \"get_reservation_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"get_flight_status\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"calculate\"], \"calculate\"]": 1.0,
+        "[[\"calculate\", \"calculate\"], \"book_reservation\"]": 3.0,
+        "[[\"calculate\", \"book_reservation\"], \"|EOS|\"]": 4.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"list_all_airports\", \"transfer_to_human_agents\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"search_onestop_flight\"], \"get_reservation_details\"]": 6.0,
+        "[[\"search_onestop_flight\", \"get_reservation_details\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"search_onestop_flight\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"search_onestop_flight\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"send_certificate\"]": 5.0,
+        "[[\"get_reservation_details\", \"send_certificate\"], \"|EOS|\"]": 6.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"book_reservation\"]": 6.0,
+        "[[\"get_reservation_details\", \"book_reservation\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"book_reservation\", \"search_onestop_flight\"], \"cancel_reservation\"]": 1.0,
+        "[[\"search_onestop_flight\", \"cancel_reservation\"], \"list_all_airports\"]": 1.0,
+        "[[\"cancel_reservation\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"search_onestop_flight\"]": 4.0,
+        "[[\"get_reservation_details\", \"search_onestop_flight\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"search_onestop_flight\", \"update_reservation_baggages\"], \"book_reservation\"]": 3.0,
+        "[[\"update_reservation_baggages\", \"book_reservation\"], \"|EOS|\"]": 3.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"calculate\"]": 2.0,
+        "[[\"get_flight_status\", \"calculate\"], \"get_user_details\"]": 1.0,
+        "[[\"calculate\", \"get_user_details\"], \"update_reservation_baggages\"]": 2.0,
+        "[[\"get_user_details\", \"update_reservation_baggages\"], \"calculate\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"get_reservation_details\"]": 1.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"send_certificate\"]": 2.0,
+        "[[\"list_all_airports\", \"book_reservation\"], \"calculate\"]": 5.0,
+        "[[\"book_reservation\", \"calculate\"], \"calculate\"]": 7.0,
+        "[[\"calculate\", \"calculate\"], \"get_flight_status\"]": 2.0,
+        "[[\"calculate\", \"get_flight_status\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"search_direct_flight\"]": 4.0,
+        "[[\"book_reservation\", \"search_direct_flight\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"update_reservation_flights\"]": 10.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"search_onestop_flight\"]": 3.0,
+        "[[\"update_reservation_flights\", \"search_onestop_flight\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"search_onestop_flight\"], \"list_all_airports\"]": 3.0,
+        "[[\"search_onestop_flight\", \"list_all_airports\"], \"search_onestop_flight\"]": 3.0,
+        "[[\"list_all_airports\", \"search_onestop_flight\"], \"get_user_details\"]": 2.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"search_direct_flight\"]": 3.0,
+        "[[\"get_flight_status\", \"search_direct_flight\"], \"get_flight_status\"]": 2.0,
+        "[[\"search_direct_flight\", \"get_flight_status\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"get_flight_status\", \"update_reservation_baggages\"], \"calculate\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"calculate\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"update_reservation_baggages\"]": 2.0,
+        "[[\"update_reservation_flights\", \"update_reservation_baggages\"], \"search_direct_flight\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"search_direct_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"get_user_details\", \"book_reservation\"], \"get_flight_status\"]": 1.0,
+        "[[\"book_reservation\", \"get_flight_status\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"get_reservation_details\"]": 1.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"|EOS|\"]": 2.0,
+        "[[\"book_reservation\", \"get_reservation_details\"], \"get_flight_status\"]": 1.0,
+        "[[\"|BOS|\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"search_onestop_flight\"]": 4.0,
+        "[[\"search_onestop_flight\", \"list_all_airports\"], \"search_direct_flight\"]": 3.0,
+        "[[\"book_reservation\", \"calculate\"], \"get_user_details\"]": 2.0,
+        "[[\"calculate\", \"get_user_details\"], \"|EOS|\"]": 4.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"calculate\"]": 3.0,
+        "[[\"update_reservation_passengers\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"get_flight_status\", \"calculate\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"calculate\", \"update_reservation_flights\"], \"|EOS|\"]": 1.0,
+        "[[\"update_reservation_flights\", \"cancel_reservation\"], \"|EOS|\"]": 3.0,
+        "[[\"search_onestop_flight\", \"get_user_details\"], \"book_reservation\"]": 3.0,
+        "[[\"get_user_details\", \"book_reservation\"], \"send_certificate\"]": 2.0,
+        "[[\"book_reservation\", \"send_certificate\"], \"get_reservation_details\"]": 2.0,
+        "[[\"send_certificate\", \"get_reservation_details\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"get_user_details\"]": 2.0,
+        "[[\"list_all_airports\", \"get_user_details\"], \"get_reservation_details\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"get_user_details\"]": 3.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"calculate\"]": 2.0,
+        "[[\"get_user_details\", \"calculate\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"calculate\", \"update_reservation_flights\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"update_reservation_flights\", \"search_onestop_flight\"], \"list_all_airports\"]": 3.0,
+        "[[\"list_all_airports\", \"search_onestop_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"book_reservation\", \"list_all_airports\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"get_flight_status\", \"search_direct_flight\"], \"get_reservation_details\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"get_reservation_details\"]": 2.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"get_user_details\"]": 3.0,
+        "[[\"search_onestop_flight\", \"get_user_details\"], \"send_certificate\"]": 2.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"transfer_to_human_agents\"]": 2.0,
+        "[[\"send_certificate\", \"transfer_to_human_agents\"], \"|EOS|\"]": 4.0,
+        "[[\"get_reservation_details\", \"update_reservation_baggages\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"update_reservation_passengers\"], \"send_certificate\"]": 2.0,
+        "[[\"update_reservation_passengers\", \"send_certificate\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"calculate\", \"calculate\"], \"get_reservation_details\"]": 2.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"calculate\"]": 2.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"get_user_details\"]": 2.0,
+        "[[\"get_user_details\", \"update_reservation_baggages\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"update_reservation_passengers\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_flight_status\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"search_direct_flight\", \"search_onestop_flight\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"calculate\"], \"book_reservation\"]": 6.0,
+        "[[\"calculate\", \"book_reservation\"], \"get_user_details\"]": 2.0,
+        "[[\"book_reservation\", \"get_user_details\"], \"get_reservation_details\"]": 5.0,
+        "[[\"get_user_details\", \"search_direct_flight\"], \"calculate\"]": 1.0,
+        "[[\"search_direct_flight\", \"calculate\"], \"|EOS|\"]": 3.0,
+        "[[\"|BOS|\", \"get_flight_status\"], \"list_all_airports\"]": 2.0,
+        "[[\"get_flight_status\", \"list_all_airports\"], \"calculate\"]": 1.0,
+        "[[\"book_reservation\", \"search_direct_flight\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"cancel_reservation\"]": 1.0,
+        "[[\"list_all_airports\", \"cancel_reservation\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"cancel_reservation\", \"update_reservation_baggages\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"update_reservation_baggages\"], \"list_all_airports\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"get_flight_status\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"get_flight_status\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"get_flight_status\", \"update_reservation_flights\"], \"cancel_reservation\"]": 2.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"send_certificate\"]": 2.0,
+        "[[\"calculate\", \"send_certificate\"], \"list_all_airports\"]": 2.0,
+        "[[\"send_certificate\", \"list_all_airports\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"list_all_airports\", \"update_reservation_baggages\"], \"search_direct_flight\"]": 2.0,
+        "[[\"update_reservation_baggages\", \"search_direct_flight\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"search_direct_flight\", \"update_reservation_passengers\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"update_reservation_baggages\"], \"|EOS|\"]": 1.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"get_user_details\"]": 3.0,
+        "[[\"update_reservation_flights\", \"get_user_details\"], \"get_user_details\"]": 1.0,
+        "[[\"get_user_details\", \"get_user_details\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"search_onestop_flight\"], \"search_onestop_flight\"]": 2.0,
+        "[[\"search_onestop_flight\", \"search_onestop_flight\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_onestop_flight\", \"search_direct_flight\"], \"|EOS|\"]": 1.0,
+        "[[\"search_onestop_flight\", \"list_all_airports\"], \"|EOS|\"]": 4.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"get_reservation_details\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"|EOS|\"]": 2.0,
+        "[[\"get_flight_status\", \"search_onestop_flight\"], \"transfer_to_human_agents\"]": 2.0,
+        "[[\"get_reservation_details\", \"send_certificate\"], \"search_direct_flight\"]": 3.0,
+        "[[\"send_certificate\", \"search_direct_flight\"], \"search_onestop_flight\"]": 2.0,
+        "[[\"get_reservation_details\", \"book_reservation\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"book_reservation\", \"transfer_to_human_agents\"], \"|EOS|\"]": 4.0,
+        "[[\"list_all_airports\", \"get_reservation_details\"], \"search_onestop_flight\"]": 4.0,
+        "[[\"get_reservation_details\", \"search_onestop_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"search_onestop_flight\", \"book_reservation\"], \"calculate\"]": 2.0,
+        "[[\"calculate\", \"get_flight_status\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"update_reservation_flights\", \"get_reservation_details\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"get_flight_status\"]": 1.0,
+        "[[\"calculate\", \"get_flight_status\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_flight_status\", \"search_direct_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_user_details\"], \"|EOS|\"]": 5.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"cancel_reservation\"]": 2.0,
+        "[[\"get_user_details\", \"cancel_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"|EOS|\"]": 4.0,
+        "[[\"|BOS|\", \"get_flight_status\"], \"get_user_details\"]": 1.0,
+        "[[\"get_flight_status\", \"get_user_details\"], \"send_certificate\"]": 1.0,
+        "[[\"send_certificate\", \"send_certificate\"], \"|EOS|\"]": 3.0,
+        "[[\"get_reservation_details\", \"list_all_airports\"], \"get_reservation_details\"]": 3.0,
+        "[[\"get_reservation_details\", \"send_certificate\"], \"update_reservation_baggages\"]": 2.0,
+        "[[\"send_certificate\", \"update_reservation_baggages\"], \"get_reservation_details\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"get_reservation_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"update_reservation_passengers\"]": 3.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"send_certificate\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"send_certificate\"], \"get_user_details\"]": 1.0,
+        "[[\"send_certificate\", \"get_user_details\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"get_user_details\", \"update_reservation_flights\"], \"get_flight_status\"]": 1.0,
+        "[[\"calculate\", \"book_reservation\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"send_certificate\"]": 2.0,
+        "[[\"send_certificate\", \"update_reservation_baggages\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"send_certificate\"], \"|EOS|\"]": 1.0,
+        "[[\"book_reservation\", \"send_certificate\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"send_certificate\", \"search_onestop_flight\"], \"send_certificate\"]": 1.0,
+        "[[\"search_onestop_flight\", \"send_certificate\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"search_direct_flight\"]": 2.0,
+        "[[\"search_direct_flight\", \"calculate\"], \"calculate\"]": 1.0,
+        "[[\"calculate\", \"send_certificate\"], \"|EOS|\"]": 2.0,
+        "[[\"book_reservation\", \"calculate\"], \"|EOS|\"]": 3.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"update_reservation_flights\"]": 3.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"get_flight_status\"]": 1.0,
+        "[[\"update_reservation_flights\", \"get_flight_status\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"|BOS|\", \"calculate\"], \"search_direct_flight\"]": 1.0,
+        "[[\"calculate\", \"search_direct_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"update_reservation_flights\", \"get_user_details\"], \"send_certificate\"]": 1.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"get_reservation_details\"]": 2.0,
+        "[[\"send_certificate\", \"get_reservation_details\"], \"send_certificate\"]": 1.0,
+        "[[\"get_reservation_details\", \"send_certificate\"], \"search_onestop_flight\"]": 2.0,
+        "[[\"send_certificate\", \"search_onestop_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"get_user_details\", \"send_certificate\"], \"calculate\"]": 3.0,
+        "[[\"send_certificate\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"book_reservation\"], \"list_all_airports\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"get_reservation_details\"]": 7.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"cancel_reservation\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"list_all_airports\"]": 1.0,
+        "[[\"search_direct_flight\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"calculate\", \"search_onestop_flight\"], \"get_flight_status\"]": 1.0,
+        "[[\"search_onestop_flight\", \"get_flight_status\"], \"|EOS|\"]": 2.0,
+        "[[\"get_reservation_details\", \"search_onestop_flight\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"search_onestop_flight\", \"update_reservation_flights\"], \"update_reservation_passengers\"]": 2.0,
+        "[[\"update_reservation_flights\", \"update_reservation_passengers\"], \"|EOS|\"]": 1.0,
+        "[[\"send_certificate\", \"get_reservation_details\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"list_all_airports\"]": 1.0,
+        "[[\"update_reservation_flights\", \"list_all_airports\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"list_all_airports\", \"update_reservation_baggages\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"update_reservation_flights\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"book_reservation\"]": 2.0,
+        "[[\"book_reservation\", \"book_reservation\"], \"calculate\"]": 3.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"search_onestop_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"search_onestop_flight\", \"book_reservation\"], \"cancel_reservation\"]": 1.0,
+        "[[\"book_reservation\", \"cancel_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"search_direct_flight\", \"transfer_to_human_agents\"], \"|EOS|\"]": 1.0,
+        "[[\"calculate\", \"list_all_airports\"], \"search_direct_flight\"]": 2.0,
+        "[[\"get_reservation_details\", \"update_reservation_baggages\"], \"get_reservation_details\"]": 1.0,
+        "[[\"update_reservation_baggages\", \"get_reservation_details\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"send_certificate\"]": 3.0,
+        "[[\"update_reservation_flights\", \"send_certificate\"], \"search_direct_flight\"]": 2.0,
+        "[[\"send_certificate\", \"search_direct_flight\"], \"calculate\"]": 1.0,
+        "[[\"book_reservation\", \"get_reservation_details\"], \"get_user_details\"]": 1.0,
+        "[[\"list_all_airports\", \"get_user_details\"], \"cancel_reservation\"]": 1.0,
+        "[[\"get_user_details\", \"cancel_reservation\"], \"send_certificate\"]": 2.0,
+        "[[\"cancel_reservation\", \"send_certificate\"], \"|EOS|\"]": 1.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"list_all_airports\"]": 2.0,
+        "[[\"book_reservation\", \"get_reservation_details\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"calculate\", \"calculate\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"calculate\", \"search_onestop_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"book_reservation\", \"get_user_details\"], \"book_reservation\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"send_certificate\"]": 2.0,
+        "[[\"search_direct_flight\", \"search_onestop_flight\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_onestop_flight\", \"search_direct_flight\"], \"send_certificate\"]": 1.0,
+        "[[\"search_direct_flight\", \"send_certificate\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"book_reservation\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"get_flight_status\"]": 1.0,
+        "[[\"search_onestop_flight\", \"get_reservation_details\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_baggages\"], \"|EOS|\"]": 1.0,
+        "[[\"update_reservation_flights\", \"send_certificate\"], \"list_all_airports\"]": 1.0,
+        "[[\"send_certificate\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"book_reservation\", \"get_reservation_details\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"book_reservation\"], \"book_reservation\"]": 3.0,
+        "[[\"book_reservation\", \"calculate\"], \"search_onestop_flight\"]": 2.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_user_details\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"get_user_details\", \"update_reservation_baggages\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"list_all_airports\"]": 2.0,
+        "[[\"list_all_airports\", \"list_all_airports\"], \"search_direct_flight\"]": 2.0,
+        "[[\"|BOS|\", \"calculate\"], \"list_all_airports\"]": 1.0,
+        "[[\"calculate\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"list_all_airports\", \"search_direct_flight\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"get_user_details\", \"search_direct_flight\"], \"book_reservation\"]": 3.0,
+        "[[\"search_direct_flight\", \"book_reservation\"], \"get_user_details\"]": 3.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"calculate\"]": 1.0,
+        "[[\"update_reservation_flights\", \"calculate\"], \"cancel_reservation\"]": 1.0,
+        "[[\"calculate\", \"cancel_reservation\"], \"get_reservation_details\"]": 1.0,
+        "[[\"cancel_reservation\", \"get_reservation_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_onestop_flight\", \"get_reservation_details\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"calculate\"], \"get_flight_status\"]": 1.0,
+        "[[\"calculate\", \"get_flight_status\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"get_flight_status\", \"update_reservation_passengers\"], \"calculate\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"calculate\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_passengers\"], \"list_all_airports\"]": 2.0,
+        "[[\"update_reservation_passengers\", \"list_all_airports\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"search_onestop_flight\", \"list_all_airports\"], \"calculate\"]": 1.0,
+        "[[\"list_all_airports\", \"calculate\"], \"get_flight_status\"]": 2.0,
+        "[[\"calculate\", \"get_flight_status\"], \"book_reservation\"]": 1.0,
+        "[[\"get_flight_status\", \"book_reservation\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"get_reservation_details\"], \"send_certificate\"]": 3.0,
+        "[[\"send_certificate\", \"search_direct_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"get_flight_status\"]": 2.0,
+        "[[\"get_user_details\", \"get_flight_status\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"get_flight_status\", \"update_reservation_passengers\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"get_reservation_details\"], \"calculate\"]": 1.0,
+        "[[\"get_reservation_details\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"book_reservation\", \"get_user_details\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"get_user_details\", \"search_onestop_flight\"], \"get_reservation_details\"]": 1.0,
+        "[[\"search_onestop_flight\", \"get_reservation_details\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"update_reservation_flights\", \"get_user_details\"], \"calculate\"]": 1.0,
+        "[[\"get_user_details\", \"calculate\"], \"send_certificate\"]": 2.0,
+        "[[\"send_certificate\", \"search_onestop_flight\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"get_flight_status\"]": 2.0,
+        "[[\"search_direct_flight\", \"get_flight_status\"], \"book_reservation\"]": 1.0,
+        "[[\"|BOS|\", \"list_all_airports\"], \"get_flight_status\"]": 2.0,
+        "[[\"list_all_airports\", \"get_flight_status\"], \"get_flight_status\"]": 1.0,
+        "[[\"get_flight_status\", \"get_flight_status\"], \"|EOS|\"]": 1.0,
+        "[[\"send_certificate\", \"search_direct_flight\"], \"send_certificate\"]": 2.0,
+        "[[\"search_direct_flight\", \"send_certificate\"], \"send_certificate\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"calculate\"]": 3.0,
+        "[[\"send_certificate\", \"list_all_airports\"], \"get_reservation_details\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"get_user_details\"]": 1.0,
+        "[[\"get_user_details\", \"get_flight_status\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"update_reservation_flights\"]": 2.0,
+        "[[\"get_flight_status\", \"update_reservation_flights\"], \"|EOS|\"]": 2.0,
+        "[[\"send_certificate\", \"calculate\"], \"get_user_details\"]": 1.0,
+        "[[\"calculate\", \"get_user_details\"], \"send_certificate\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_direct_flight\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"list_all_airports\", \"book_reservation\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_flight_status\", \"get_reservation_details\"], \"|EOS|\"]": 2.0,
+        "[[\"book_reservation\", \"search_direct_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_flight_status\"], \"get_reservation_details\"]": 1.0,
+        "[[\"calculate\", \"book_reservation\"], \"get_flight_status\"]": 1.0,
+        "[[\"book_reservation\", \"get_flight_status\"], \"get_user_details\"]": 1.0,
+        "[[\"get_flight_status\", \"get_user_details\"], \"search_direct_flight\"]": 1.0,
+        "[[\"calculate\", \"search_onestop_flight\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"search_onestop_flight\", \"search_onestop_flight\"], \"|EOS|\"]": 2.0,
+        "[[\"list_all_airports\", \"calculate\"], \"list_all_airports\"]": 2.0,
+        "[[\"calculate\", \"list_all_airports\"], \"book_reservation\"]": 1.0,
+        "[[\"list_all_airports\", \"book_reservation\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"get_user_details\"], \"get_user_details\"]": 3.0,
+        "[[\"get_user_details\", \"get_user_details\"], \"book_reservation\"]": 2.0,
+        "[[\"send_certificate\", \"calculate\"], \"calculate\"]": 1.0,
+        "[[\"calculate\", \"book_reservation\"], \"transfer_to_human_agents\"]": 2.0,
+        "[[\"cancel_reservation\", \"send_certificate\"], \"search_direct_flight\"]": 1.0,
+        "[[\"search_direct_flight\", \"send_certificate\"], \"book_reservation\"]": 1.0,
+        "[[\"send_certificate\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"search_onestop_flight\", \"get_reservation_details\"], \"get_reservation_details\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"list_all_airports\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"list_all_airports\", \"update_reservation_flights\"], \"get_flight_status\"]": 1.0,
+        "[[\"calculate\", \"calculate\"], \"|EOS|\"]": 2.0,
+        "[[\"list_all_airports\", \"get_flight_status\"], \"search_direct_flight\"]": 1.0,
+        "[[\"get_flight_status\", \"search_direct_flight\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"calculate\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"search_direct_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"|BOS|\", \"book_reservation\"], \"get_flight_status\"]": 1.0,
+        "[[\"book_reservation\", \"get_flight_status\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"get_reservation_details\", \"book_reservation\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"book_reservation\", \"update_reservation_passengers\"], \"book_reservation\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"book_reservation\"], \"send_certificate\"]": 1.0,
+        "[[\"send_certificate\", \"get_reservation_details\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"get_user_details\", \"calculate\"], \"get_user_details\"]": 1.0,
+        "[[\"get_reservation_details\", \"search_onestop_flight\"], \"list_all_airports\"]": 1.0,
+        "[[\"search_onestop_flight\", \"list_all_airports\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"get_flight_status\", \"get_reservation_details\"], \"get_flight_status\"]": 1.0,
+        "[[\"get_flight_status\", \"list_all_airports\"], \"get_reservation_details\"]": 1.0,
+        "[[\"calculate\", \"list_all_airports\"], \"get_user_details\"]": 1.0,
+        "[[\"list_all_airports\", \"get_user_details\"], \"|EOS|\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_reservation_details\"], \"get_user_details\"]": 1.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"calculate\", \"get_reservation_details\"], \"update_reservation_passengers\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"calculate\"], \"get_reservation_details\"]": 1.0,
+        "[[\"get_user_details\", \"calculate\"], \"book_reservation\"]": 1.0,
+        "[[\"book_reservation\", \"book_reservation\"], \"|EOS|\"]": 2.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"list_all_airports\"]": 1.0,
+        "[[\"search_direct_flight\", \"list_all_airports\"], \"transfer_to_human_agents\"]": 1.0,
+        "[[\"book_reservation\", \"search_direct_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"get_flight_status\", \"search_onestop_flight\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_user_details\", \"search_direct_flight\"], \"get_user_details\"]": 1.0,
+        "[[\"update_reservation_flights\", \"update_reservation_passengers\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"update_reservation_passengers\", \"update_reservation_flights\"], \"search_onestop_flight\"]": 1.0,
+        "[[\"get_reservation_details\", \"book_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"cancel_reservation\"]": 1.0,
+        "[[\"list_all_airports\", \"cancel_reservation\"], \"|EOS|\"]": 1.0,
+        "[[\"search_direct_flight\", \"get_reservation_details\"], \"book_reservation\"]": 1.0,
+        "[[\"get_reservation_details\", \"update_reservation_flights\"], \"update_reservation_flights\"]": 1.0,
+        "[[\"update_reservation_flights\", \"update_reservation_flights\"], \"get_reservation_details\"]": 1.0,
+        "[[\"search_onestop_flight\", \"get_reservation_details\"], \"get_flight_status\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_user_details\"], \"book_reservation\"]": 1.0,
+        "[[\"update_reservation_flights\", \"search_onestop_flight\"], \"book_reservation\"]": 1.0,
+        "[[\"book_reservation\", \"list_all_airports\"], \"calculate\"]": 1.0,
+        "[[\"list_all_airports\", \"calculate\"], \"get_reservation_details\"]": 1.0,
+        "[[\"list_all_airports\", \"search_onestop_flight\"], \"update_reservation_baggages\"]": 1.0,
+        "[[\"book_reservation\", \"get_user_details\"], \"list_all_airports\"]": 1.0,
+        "[[\"get_user_details\", \"list_all_airports\"], \"calculate\"]": 1.0,
+        "[[\"get_reservation_details\", \"get_flight_status\"], \"get_reservation_details\"]": 1.0,
+        "[[\"get_flight_status\", \"get_reservation_details\"], \"cancel_reservation\"]": 1.0,
+        "[[\"|BOS|\", \"search_direct_flight\"], \"book_reservation\"]": 1.0
+      },
+      "pos_ctx": {
+        "[\"|BOS|\", \"|BOS|\"]": 277.0,
+        "[\"|BOS|\", \"get_user_details\"]": 60.0,
+        "[\"get_user_details\", \"get_reservation_details\"]": 29.0,
+        "[\"|BOS|\", \"get_reservation_details\"]": 85.0,
+        "[\"get_reservation_details\", \"get_user_details\"]": 17.0,
+        "[\"get_reservation_details\", \"get_reservation_details\"]": 50.0,
+        "[\"|BOS|\", \"search_direct_flight\"]": 16.0,
+        "[\"get_reservation_details\", \"search_direct_flight\"]": 19.0,
+        "[\"search_direct_flight\", \"book_reservation\"]": 14.0,
+        "[\"|BOS|\", \"transfer_to_human_agents\"]": 1.0,
+        "[\"search_direct_flight\", \"search_direct_flight\"]": 22.0,
+        "[\"search_direct_flight\", \"calculate\"]": 5.0,
+        "[\"calculate\", \"update_reservation_baggages\"]": 1.0,
+        "[\"get_reservation_details\", \"update_reservation_flights\"]": 21.0,
+        "[\"update_reservation_flights\", \"cancel_reservation\"]": 4.0,
+        "[\"cancel_reservation\", \"cancel_reservation\"]": 4.0,
+        "[\"|BOS|\", \"book_reservation\"]": 34.0,
+        "[\"get_reservation_details\", \"cancel_reservation\"]": 7.0,
+        "[\"cancel_reservation\", \"book_reservation\"]": 1.0,
+        "[\"search_direct_flight\", \"update_reservation_flights\"]": 5.0,
+        "[\"update_reservation_flights\", \"update_reservation_baggages\"]": 3.0,
+        "[\"get_reservation_details\", \"update_reservation_passengers\"]": 11.0,
+        "[\"update_reservation_flights\", \"update_reservation_flights\"]": 4.0,
+        "[\"|BOS|\", \"list_all_airports\"]": 33.0,
+        "[\"get_user_details\", \"send_certificate\"]": 16.0,
+        "[\"send_certificate\", \"get_flight_status\"]": 2.0,
+        "[\"get_flight_status\", \"list_all_airports\"]": 3.0,
+        "[\"book_reservation\", \"calculate\"]": 18.0,
+        "[\"calculate\", \"get_reservation_details\"]": 18.0,
+        "[\"get_user_details\", \"book_reservation\"]": 12.0,
+        "[\"list_all_airports\", \"search_direct_flight\"]": 10.0,
+        "[\"book_reservation\", \"list_all_airports\"]": 7.0,
+        "[\"list_all_airports\", \"get_flight_status\"]": 4.0,
+        "[\"get_flight_status\", \"get_reservation_details\"]": 6.0,
+        "[\"get_reservation_details\", \"transfer_to_human_agents\"]": 2.0,
+        "[\"|BOS|\", \"calculate\"]": 22.0,
+        "[\"calculate\", \"search_onestop_flight\"]": 7.0,
+        "[\"search_onestop_flight\", \"get_user_details\"]": 13.0,
+        "[\"|BOS|\", \"get_flight_status\"]": 10.0,
+        "[\"get_reservation_details\", \"search_onestop_flight\"]": 11.0,
+        "[\"get_reservation_details\", \"list_all_airports\"]": 14.0,
+        "[\"get_reservation_details\", \"update_reservation_baggages\"]": 4.0,
+        "[\"update_reservation_baggages\", \"transfer_to_human_agents\"]": 1.0,
+        "[\"get_reservation_details\", \"calculate\"]": 11.0,
+        "[\"calculate\", \"list_all_airports\"]": 6.0,
+        "[\"list_all_airports\", \"calculate\"]": 10.0,
+        "[\"get_user_details\", \"search_onestop_flight\"]": 10.0,
+        "[\"search_onestop_flight\", \"cancel_reservation\"]": 2.0,
+        "[\"book_reservation\", \"get_user_details\"]": 16.0,
+        "[\"book_reservation\", \"search_onestop_flight\"]": 3.0,
+        "[\"list_all_airports\", \"get_reservation_details\"]": 18.0,
+        "[\"|BOS|\", \"search_onestop_flight\"]": 16.0,
+        "[\"get_reservation_details\", \"get_flight_status\"]": 18.0,
+        "[\"get_flight_status\", \"get_user_details\"]": 3.0,
+        "[\"send_certificate\", \"search_direct_flight\"]": 8.0,
+        "[\"get_user_details\", \"list_all_airports\"]": 11.0,
+        "[\"list_all_airports\", \"book_reservation\"]": 10.0,
+        "[\"book_reservation\", \"update_reservation_flights\"]": 2.0,
+        "[\"update_reservation_flights\", \"calculate\"]": 2.0,
+        "[\"list_all_airports\", \"send_certificate\"]": 3.0,
+        "[\"get_flight_status\", \"send_certificate\"]": 1.0,
+        "[\"send_certificate\", \"get_user_details\"]": 2.0,
+        "[\"list_all_airports\", \"search_onestop_flight\"]": 9.0,
+        "[\"search_onestop_flight\", \"list_all_airports\"]": 13.0,
+        "[\"list_all_airports\", \"update_reservation_passengers\"]": 1.0,
+        "[\"update_reservation_passengers\", \"search_onestop_flight\"]": 2.0,
+        "[\"search_onestop_flight\", \"transfer_to_human_agents\"]": 3.0,
+        "[\"get_flight_status\", \"search_onestop_flight\"]": 5.0,
+        "[\"send_certificate\", \"send_certificate\"]": 4.0,
+        "[\"send_certificate\", \"book_reservation\"]": 2.0,
+        "[\"calculate\", \"transfer_to_human_agents\"]": 3.0,
+        "[\"book_reservation\", \"get_reservation_details\"]": 6.0,
+        "[\"get_flight_status\", \"update_reservation_passengers\"]": 4.0,
+        "[\"update_reservation_passengers\", \"book_reservation\"]": 3.0,
+        "[\"update_reservation_flights\", \"get_flight_status\"]": 4.0,
+        "[\"get_user_details\", \"search_direct_flight\"]": 7.0,
+        "[\"get_flight_status\", \"update_reservation_flights\"]": 6.0,
+        "[\"update_reservation_flights\", \"get_reservation_details\"]": 3.0,
+        "[\"calculate\", \"calculate\"]": 10.0,
+        "[\"calculate\", \"book_reservation\"]": 10.0,
+        "[\"list_all_airports\", \"transfer_to_human_agents\"]": 2.0,
+        "[\"search_onestop_flight\", \"get_reservation_details\"]": 7.0,
+        "[\"search_onestop_flight\", \"book_reservation\"]": 4.0,
+        "[\"get_reservation_details\", \"send_certificate\"]": 13.0,
+        "[\"get_reservation_details\", \"book_reservation\"]": 7.0,
+        "[\"cancel_reservation\", \"list_all_airports\"]": 1.0,
+        "[\"search_onestop_flight\", \"update_reservation_baggages\"]": 3.0,
+        "[\"update_reservation_baggages\", \"book_reservation\"]": 3.0,
+        "[\"get_flight_status\", \"calculate\"]": 2.0,
+        "[\"calculate\", \"get_user_details\"]": 7.0,
+        "[\"get_user_details\", \"update_reservation_baggages\"]": 3.0,
+        "[\"update_reservation_baggages\", \"calculate\"]": 2.0,
+        "[\"calculate\", \"get_flight_status\"]": 6.0,
+        "[\"book_reservation\", \"search_direct_flight\"]": 6.0,
+        "[\"update_reservation_flights\", \"search_onestop_flight\"]": 5.0,
+        "[\"get_flight_status\", \"search_direct_flight\"]": 5.0,
+        "[\"search_direct_flight\", \"get_flight_status\"]": 4.0,
+        "[\"get_flight_status\", \"update_reservation_baggages\"]": 1.0,
+        "[\"update_reservation_baggages\", \"search_direct_flight\"]": 3.0,
+        "[\"book_reservation\", \"get_flight_status\"]": 3.0,
+        "[\"update_reservation_passengers\", \"calculate\"]": 4.0,
+        "[\"calculate\", \"update_reservation_flights\"]": 2.0,
+        "[\"book_reservation\", \"send_certificate\"]": 3.0,
+        "[\"send_certificate\", \"get_reservation_details\"]": 4.0,
+        "[\"list_all_airports\", \"get_user_details\"]": 3.0,
+        "[\"get_user_details\", \"calculate\"]": 6.0,
+        "[\"search_direct_flight\", \"get_reservation_details\"]": 9.0,
+        "[\"send_certificate\", \"transfer_to_human_agents\"]": 4.0,
+        "[\"update_reservation_baggages\", \"update_reservation_passengers\"]": 3.0,
+        "[\"update_reservation_passengers\", \"send_certificate\"]": 3.0,
+        "[\"search_direct_flight\", \"search_onestop_flight\"]": 4.0,
+        "[\"list_all_airports\", \"cancel_reservation\"]": 2.0,
+        "[\"cancel_reservation\", \"update_reservation_baggages\"]": 1.0,
+        "[\"update_reservation_baggages\", \"update_reservation_baggages\"]": 1.0,
+        "[\"update_reservation_baggages\", \"list_all_airports\"]": 1.0,
+        "[\"update_reservation_passengers\", \"get_flight_status\"]": 1.0,
+        "[\"calculate\", \"send_certificate\"]": 4.0,
+        "[\"send_certificate\", \"list_all_airports\"]": 3.0,
+        "[\"list_all_airports\", \"update_reservation_baggages\"]": 3.0,
+        "[\"search_direct_flight\", \"update_reservation_passengers\"]": 1.0,
+        "[\"update_reservation_passengers\", \"update_reservation_baggages\"]": 1.0,
+        "[\"update_reservation_flights\", \"get_user_details\"]": 3.0,
+        "[\"get_user_details\", \"get_user_details\"]": 4.0,
+        "[\"search_onestop_flight\", \"search_onestop_flight\"]": 3.0,
+        "[\"search_onestop_flight\", \"search_direct_flight\"]": 2.0,
+        "[\"book_reservation\", \"transfer_to_human_agents\"]": 4.0,
+        "[\"search_direct_flight\", \"get_user_details\"]": 6.0,
+        "[\"get_user_details\", \"cancel_reservation\"]": 3.0,
+        "[\"send_certificate\", \"update_reservation_baggages\"]": 2.0,
+        "[\"update_reservation_baggages\", \"get_reservation_details\"]": 2.0,
+        "[\"get_user_details\", \"update_reservation_flights\"]": 1.0,
+        "[\"send_certificate\", \"search_onestop_flight\"]": 3.0,
+        "[\"search_onestop_flight\", \"send_certificate\"]": 1.0,
+        "[\"calculate\", \"search_direct_flight\"]": 2.0,
+        "[\"send_certificate\", \"calculate\"]": 3.0,
+        "[\"search_direct_flight\", \"list_all_airports\"]": 2.0,
+        "[\"search_onestop_flight\", \"get_flight_status\"]": 2.0,
+        "[\"search_onestop_flight\", \"update_reservation_flights\"]": 2.0,
+        "[\"update_reservation_flights\", \"update_reservation_passengers\"]": 2.0,
+        "[\"update_reservation_flights\", \"list_all_airports\"]": 1.0,
+        "[\"update_reservation_baggages\", \"update_reservation_flights\"]": 1.0,
+        "[\"book_reservation\", \"book_reservation\"]": 5.0,
+        "[\"book_reservation\", \"cancel_reservation\"]": 1.0,
+        "[\"search_direct_flight\", \"transfer_to_human_agents\"]": 1.0,
+        "[\"update_reservation_flights\", \"send_certificate\"]": 3.0,
+        "[\"cancel_reservation\", \"send_certificate\"]": 2.0,
+        "[\"search_direct_flight\", \"send_certificate\"]": 3.0,
+        "[\"list_all_airports\", \"list_all_airports\"]": 2.0,
+        "[\"calculate\", \"cancel_reservation\"]": 1.0,
+        "[\"cancel_reservation\", \"get_reservation_details\"]": 1.0,
+        "[\"update_reservation_passengers\", \"list_all_airports\"]": 2.0,
+        "[\"get_flight_status\", \"book_reservation\"]": 2.0,
+        "[\"get_user_details\", \"get_flight_status\"]": 2.0,
+        "[\"get_flight_status\", \"get_flight_status\"]": 1.0,
+        "[\"list_all_airports\", \"update_reservation_flights\"]": 1.0,
+        "[\"book_reservation\", \"update_reservation_passengers\"]": 1.0,
+        "[\"update_reservation_passengers\", \"update_reservation_flights\"]": 1.0
+      },
+      "neg_ngram": {},
+      "neg_ctx": {}
+    }
+  },
+  "sampler": {
+    "t": 800,
+    "accepted_set": [
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "get_flight_status",
+        "update_reservation_flights",
+        "get_reservation_details"
+      ],
+      [
+        "search_onestop_flight",
+        "list_all_airports",
+        "calculate",
+        "get_flight_status",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "get_user_details",
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "get_flight_status",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "send_certificate",
+        "get_flight_status",
+        "update_reservation_flights",
+        "get_reservation_details",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "list_all_airports",
+        "update_reservation_baggages",
+        "search_direct_flight"
+      ],
+      [
+        "get_flight_status",
+        "list_all_airports",
+        "get_reservation_details",
+        "calculate",
+        "list_all_airports",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "send_certificate",
+        "search_direct_flight",
+        "calculate"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "get_reservation_details",
+        "calculate",
+        "get_user_details",
+        "update_reservation_baggages",
+        "update_reservation_passengers"
+      ],
+      [
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "get_user_details",
+        "cancel_reservation",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "cancel_reservation"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "send_certificate",
+        "list_all_airports",
+        "update_reservation_baggages",
+        "search_direct_flight",
+        "update_reservation_passengers",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation",
+        "search_direct_flight"
+      ],
+      [
+        "search_direct_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details",
+        "send_certificate",
+        "calculate"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "get_flight_status",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "list_all_airports",
+        "calculate"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "get_flight_status"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "list_all_airports",
+        "update_reservation_baggages",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "calculate",
+        "get_user_details",
+        "update_reservation_baggages",
+        "calculate"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "get_flight_status",
+        "get_user_details",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "calculate",
+        "get_flight_status",
+        "update_reservation_passengers",
+        "calculate",
+        "search_direct_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "list_all_airports",
+        "update_reservation_flights",
+        "get_flight_status"
+      ],
+      [
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "calculate",
+        "get_reservation_details",
+        "calculate",
+        "send_certificate"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "book_reservation",
+        "calculate",
+        "search_onestop_flight",
+        "get_user_details",
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "update_reservation_baggages",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_flight_status",
+        "update_reservation_baggages",
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "send_certificate"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "get_user_details",
+        "send_certificate"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "search_direct_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "get_user_details",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "get_flight_status",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_reservation_details",
+        "send_certificate",
+        "update_reservation_baggages",
+        "get_reservation_details",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "list_all_airports",
+        "send_certificate"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_user_details",
+        "send_certificate",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_direct_flight",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "search_onestop_flight",
+        "book_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_user_details",
+        "get_user_details"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "calculate",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "list_all_airports",
+        "calculate",
+        "search_onestop_flight",
+        "get_user_details",
+        "search_onestop_flight",
+        "cancel_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "book_reservation",
+        "book_reservation"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "calculate",
+        "calculate",
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "get_flight_status",
+        "update_reservation_passengers"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "get_flight_status"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_flight_status"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_direct_flight",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "update_reservation_flights"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "search_onestop_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_flight_status",
+        "get_user_details",
+        "send_certificate",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "search_onestop_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "book_reservation",
+        "search_direct_flight"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "get_flight_status"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "update_reservation_passengers"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "send_certificate",
+        "update_reservation_baggages",
+        "update_reservation_passengers",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "calculate",
+        "get_user_details",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "send_certificate",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation",
+        "list_all_airports",
+        "get_flight_status",
+        "get_reservation_details",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "get_flight_status",
+        "search_onestop_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "search_direct_flight",
+        "list_all_airports",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "search_onestop_flight",
+        "cancel_reservation",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "calculate",
+        "send_certificate",
+        "list_all_airports",
+        "get_reservation_details",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "send_certificate",
+        "search_onestop_flight",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "update_reservation_passengers",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "calculate"
+      ],
+      [
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_baggages"
+      ],
+      [
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "send_certificate",
+        "send_certificate",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "get_flight_status",
+        "list_all_airports",
+        "calculate"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "update_reservation_passengers",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "list_all_airports"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "calculate",
+        "get_reservation_details",
+        "get_flight_status",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_baggages",
+        "update_reservation_passengers",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "book_reservation",
+        "list_all_airports",
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "send_certificate",
+        "search_onestop_flight",
+        "update_reservation_baggages",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "book_reservation",
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "calculate",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate",
+        "search_direct_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "book_reservation",
+        "get_user_details",
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_user_details",
+        "calculate",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "update_reservation_baggages",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "send_certificate"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details"
+      ],
+      [
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_baggages",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "send_certificate",
+        "get_user_details",
+        "update_reservation_flights",
+        "get_flight_status"
+      ],
+      [
+        "get_flight_status",
+        "get_reservation_details"
+      ],
+      [
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_flight_status",
+        "update_reservation_flights",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "calculate",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "get_flight_status",
+        "update_reservation_flights",
+        "cancel_reservation"
+      ],
+      [
+        "calculate",
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "update_reservation_passengers",
+        "book_reservation",
+        "send_certificate",
+        "get_reservation_details",
+        "transfer_to_human_agents"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "get_user_details",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_user_details",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_flight_status",
+        "search_onestop_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "list_all_airports",
+        "book_reservation",
+        "update_reservation_flights",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "get_user_details",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "list_all_airports",
+        "book_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "get_flight_status",
+        "book_reservation"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details",
+        "book_reservation",
+        "send_certificate",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "book_reservation",
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "get_flight_status",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "calculate",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation"
+      ],
+      [
+        "get_flight_status",
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_user_details",
+        "cancel_reservation"
+      ],
+      [
+        "list_all_airports",
+        "get_flight_status",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_flight_status"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_flight_status",
+        "update_reservation_passengers",
+        "book_reservation",
+        "update_reservation_flights",
+        "get_flight_status"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_user_details",
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "cancel_reservation",
+        "send_certificate",
+        "search_direct_flight",
+        "send_certificate",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "send_certificate",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "transfer_to_human_agents"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "calculate",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "get_flight_status",
+        "update_reservation_flights"
+      ],
+      [
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "calculate",
+        "search_onestop_flight",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "get_flight_status",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "cancel_reservation",
+        "book_reservation"
+      ],
+      [
+        "book_reservation",
+        "book_reservation",
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "calculate",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_onestop_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "calculate",
+        "cancel_reservation",
+        "get_reservation_details",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "calculate"
+      ],
+      [
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_user_details",
+        "send_certificate",
+        "get_reservation_details",
+        "send_certificate",
+        "search_onestop_flight",
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "book_reservation",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_baggages",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "list_all_airports",
+        "cancel_reservation",
+        "update_reservation_baggages",
+        "update_reservation_baggages",
+        "list_all_airports"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "send_certificate",
+        "get_user_details",
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports",
+        "update_reservation_passengers",
+        "search_onestop_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_flight_status",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_flight_status"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "get_user_details",
+        "send_certificate"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "send_certificate",
+        "search_direct_flight",
+        "send_certificate",
+        "send_certificate"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "get_user_details",
+        "get_flight_status"
+      ],
+      [
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      [
+        "book_reservation",
+        "list_all_airports",
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_onestop_flight",
+        "update_reservation_baggages",
+        "book_reservation"
+      ]
+    ],
+    "rejected_set": [],
+    "action_sequence_set": [
+      [
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "get_user_details"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "cancel_reservation",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      [
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "get_flight_status",
+        "list_all_airports"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation",
+        "list_all_airports",
+        "get_flight_status",
+        "get_reservation_details",
+        "transfer_to_human_agents"
+      ],
+      [
+        "calculate",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "get_flight_status",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports"
+      ],
+      [
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_baggages",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "list_all_airports",
+        "calculate",
+        "search_onestop_flight",
+        "get_user_details",
+        "search_onestop_flight",
+        "cancel_reservation"
+      ],
+      [
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation",
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "calculate"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "calculate",
+        "get_reservation_details",
+        "get_flight_status",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "list_all_airports",
+        "book_reservation",
+        "update_reservation_flights",
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "get_user_details",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "list_all_airports",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "send_certificate",
+        "get_user_details",
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports",
+        "update_reservation_passengers",
+        "search_onestop_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_flight_status",
+        "search_onestop_flight"
+      ],
+      [
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "send_certificate",
+        "send_certificate",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_flight_status",
+        "update_reservation_passengers",
+        "book_reservation",
+        "update_reservation_flights",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "send_certificate",
+        "get_flight_status",
+        "update_reservation_flights",
+        "get_reservation_details",
+        "search_direct_flight"
+      ],
+      [
+        "get_flight_status"
+      ],
+      [
+        "calculate",
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "transfer_to_human_agents"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "book_reservation"
+      ],
+      [
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "search_onestop_flight",
+        "cancel_reservation",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "update_reservation_baggages",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "calculate",
+        "get_user_details",
+        "update_reservation_baggages",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "get_flight_status"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "search_onestop_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_flight_status",
+        "update_reservation_baggages",
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "update_reservation_baggages",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "calculate",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "cancel_reservation"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details",
+        "book_reservation",
+        "send_certificate",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "get_user_details",
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "calculate",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "book_reservation",
+        "list_all_airports",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_reservation_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_user_details",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_baggages",
+        "update_reservation_passengers",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "get_reservation_details",
+        "calculate",
+        "get_user_details",
+        "update_reservation_baggages",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_flight_status"
+      ],
+      [
+        "search_direct_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "calculate"
+      ],
+      [
+        "get_flight_status",
+        "list_all_airports",
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "list_all_airports",
+        "cancel_reservation",
+        "update_reservation_baggages",
+        "update_reservation_baggages",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "get_flight_status",
+        "update_reservation_flights",
+        "cancel_reservation"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "send_certificate",
+        "list_all_airports",
+        "update_reservation_baggages",
+        "search_direct_flight",
+        "update_reservation_passengers",
+        "update_reservation_baggages"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_user_details",
+        "get_user_details"
+      ],
+      [
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "search_direct_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "get_reservation_details"
+      ],
+      [
+        "get_flight_status",
+        "search_onestop_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate",
+        "search_direct_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "get_flight_status",
+        "update_reservation_flights",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "get_flight_status",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_user_details",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "get_flight_status",
+        "get_user_details",
+        "send_certificate",
+        "send_certificate"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_reservation_details",
+        "send_certificate",
+        "update_reservation_baggages",
+        "get_reservation_details",
+        "search_direct_flight"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "send_certificate",
+        "get_user_details",
+        "update_reservation_flights",
+        "get_flight_status"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "search_onestop_flight"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "send_certificate",
+        "update_reservation_baggages",
+        "update_reservation_passengers",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "send_certificate",
+        "search_onestop_flight",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate",
+        "search_direct_flight"
+      ],
+      [
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "calculate",
+        "get_reservation_details",
+        "calculate",
+        "send_certificate"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_flight_status",
+        "update_reservation_flights",
+        "cancel_reservation"
+      ],
+      [
+        "calculate",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_user_details",
+        "send_certificate",
+        "get_reservation_details",
+        "send_certificate",
+        "search_onestop_flight",
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details",
+        "send_certificate",
+        "calculate"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_user_details",
+        "book_reservation",
+        "list_all_airports"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "list_all_airports"
+      ],
+      [
+        "calculate",
+        "search_onestop_flight",
+        "get_flight_status"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "list_all_airports",
+        "update_reservation_baggages",
+        "update_reservation_flights"
+      ],
+      [
+        "book_reservation",
+        "book_reservation",
+        "calculate"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "search_onestop_flight",
+        "book_reservation",
+        "cancel_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "calculate",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_baggages",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "send_certificate",
+        "search_direct_flight",
+        "calculate"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "get_user_details",
+        "cancel_reservation",
+        "send_certificate"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "list_all_airports"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "search_onestop_flight"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "get_user_details",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "book_reservation",
+        "book_reservation",
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "get_user_details",
+        "send_certificate",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_direct_flight",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_flight_status"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_baggages"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "book_reservation",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "send_certificate",
+        "list_all_airports"
+      ],
+      [
+        "book_reservation",
+        "get_reservation_details"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "book_reservation",
+        "calculate",
+        "search_onestop_flight",
+        "get_user_details",
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "get_user_details",
+        "update_reservation_baggages"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "list_all_airports"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_direct_flight",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "calculate",
+        "cancel_reservation",
+        "get_reservation_details",
+        "search_direct_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "calculate",
+        "get_flight_status",
+        "update_reservation_passengers",
+        "calculate",
+        "search_direct_flight"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "list_all_airports"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "list_all_airports",
+        "calculate",
+        "get_flight_status",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "send_certificate",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "get_flight_status",
+        "update_reservation_passengers"
+      ],
+      [
+        "get_user_details",
+        "list_all_airports",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "get_reservation_details",
+        "calculate"
+      ],
+      [
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "book_reservation",
+        "get_user_details",
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "get_user_details",
+        "calculate",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "send_certificate",
+        "search_onestop_flight",
+        "update_reservation_baggages",
+        "book_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "get_flight_status",
+        "book_reservation"
+      ],
+      [
+        "list_all_airports",
+        "get_flight_status",
+        "get_flight_status"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "send_certificate",
+        "search_direct_flight",
+        "send_certificate",
+        "send_certificate"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "calculate",
+        "send_certificate",
+        "list_all_airports",
+        "get_reservation_details",
+        "list_all_airports"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "get_user_details",
+        "get_flight_status"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "update_reservation_flights"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "send_certificate"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "calculate",
+        "get_user_details",
+        "send_certificate"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "list_all_airports",
+        "book_reservation",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "get_flight_status"
+      ],
+      [
+        "get_flight_status",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "update_reservation_passengers",
+        "book_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "get_flight_status",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "get_flight_status",
+        "get_user_details",
+        "search_direct_flight"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "search_onestop_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "list_all_airports",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "send_certificate",
+        "calculate",
+        "calculate",
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "cancel_reservation",
+        "send_certificate",
+        "search_direct_flight",
+        "send_certificate",
+        "book_reservation"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "get_reservation_details"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "list_all_airports",
+        "update_reservation_flights",
+        "get_flight_status"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "send_certificate"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation",
+        "calculate",
+        "calculate"
+      ],
+      [
+        "list_all_airports",
+        "get_flight_status",
+        "search_direct_flight"
+      ],
+      [
+        "get_user_details",
+        "calculate"
+      ],
+      [
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "book_reservation",
+        "get_flight_status",
+        "search_onestop_flight",
+        "transfer_to_human_agents"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "update_reservation_passengers",
+        "book_reservation",
+        "send_certificate",
+        "get_reservation_details",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_user_details",
+        "calculate",
+        "get_user_details"
+      ],
+      [
+        "search_onestop_flight",
+        "get_user_details",
+        "search_onestop_flight"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "get_user_details",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "list_all_airports",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "list_all_airports",
+        "update_reservation_baggages",
+        "search_direct_flight"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "calculate"
+      ],
+      [
+        "get_flight_status",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "get_flight_status",
+        "list_all_airports",
+        "get_reservation_details",
+        "calculate",
+        "list_all_airports",
+        "get_user_details"
+      ],
+      [
+        "list_all_airports",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_user_details"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "search_onestop_flight"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "calculate",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "calculate",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "list_all_airports",
+        "book_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "list_all_airports",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "search_direct_flight",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "get_user_details",
+        "book_reservation",
+        "get_user_details"
+      ],
+      [
+        "get_flight_status",
+        "search_onestop_flight",
+        "list_all_airports"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "get_user_details"
+      ],
+      [
+        "search_onestop_flight",
+        "search_onestop_flight"
+      ],
+      [
+        "get_user_details",
+        "get_user_details"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "update_reservation_passengers",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "calculate",
+        "book_reservation",
+        "transfer_to_human_agents"
+      ],
+      [
+        "get_reservation_details",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "cancel_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details",
+        "book_reservation",
+        "book_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "calculate",
+        "list_all_airports",
+        "search_direct_flight"
+      ],
+      [
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "get_reservation_details"
+      ],
+      [
+        "list_all_airports",
+        "search_onestop_flight",
+        "get_user_details"
+      ],
+      [
+        "book_reservation",
+        "calculate",
+        "search_onestop_flight"
+      ],
+      [
+        "search_onestop_flight",
+        "get_reservation_details",
+        "get_flight_status",
+        "update_reservation_flights"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "book_reservation",
+        "calculate",
+        "get_reservation_details"
+      ],
+      [
+        "book_reservation",
+        "list_all_airports",
+        "calculate",
+        "get_reservation_details",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "list_all_airports",
+        "search_onestop_flight",
+        "update_reservation_baggages",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "get_user_details",
+        "send_certificate",
+        "transfer_to_human_agents"
+      ],
+      [
+        "book_reservation",
+        "get_user_details",
+        "list_all_airports",
+        "calculate"
+      ],
+      [
+        "get_reservation_details",
+        "get_flight_status",
+        "get_reservation_details",
+        "cancel_reservation"
+      ],
+      [
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "get_reservation_details",
+        "search_direct_flight",
+        "book_reservation"
+      ],
+      [
+        "get_user_details",
+        "search_direct_flight",
+        "book_reservation",
+        "list_all_airports"
+      ]
+    ]
+  },
+  "config": {
+    "domain": "airline",
+    "tau0": 3.0,
+    "tau_decay_steps": 1500.0,
+    "positive_weight": 1.0,
+    "negative_weight": 0.0,
+    "ingest_negatives": false,
+    "length_config": {
+      "mode": "from_seed",
+      "reference_source": "original",
+      "min_length": null,
+      "max_length": null,
+      "gaussian_mean": null,
+      "gaussian_std": null,
+      "skew_alpha": 0.0
+    },
+    "available_actions": [
+      "book_reservation",
+      "calculate",
+      "cancel_reservation",
+      "get_reservation_details",
+      "get_user_details",
+      "list_all_airports",
+      "search_direct_flight",
+      "search_onestop_flight",
+      "send_certificate",
+      "transfer_to_human_agents",
+      "update_reservation_baggages",
+      "update_reservation_flights",
+      "update_reservation_passengers",
+      "get_flight_status"
+    ]
+  },
+  "metadata": {
+    "checkpoint_type": "periodic",
+    "saved_at": "2026-04-25T11:22:07.764504+00:00",
+    "run_dir": "artifacts/ngram_training_runs/20260425_134238",
+    "config": {
+      "domain": "airline",
+      "num_samples": 3000,
+      "save_every": 100,
+      "validation_model": "gemini/gemini-3-flash-preview",
+      "max_output_tokens": 32768,
+      "workers": 4,
+      "n": 3,
+      "alpha0": 0.1,
+      "lambda_neg": 0.0,
+      "tau0": 3.0,
+      "tau_decay_steps": 1500.0,
+      "positive_weight": 1.0,
+      "negative_weight": 0.0,
+      "ingest_negatives": false,
+      "load_state": "artifacts/initialized_ngram_models/airline_no_negative_distribution/20260425_121258/ngram_airline_n3_t400.json",
+      "seed_tasks": null,
+      "resuming": true
+    },
+    "training_progress": {
+      "samples_attempted": 400,
+      "accepted_total": 135,
+      "rejected_total": 173,
+      "duplicate_total": 92,
+      "acceptance_rate_overall": 0.4383116883116883,
+      "current_tau": 2.173292439020064,
+      "t": 800,
+      "accepted_set_size": 266
+    },
+    "window_stats": [
+      {
+        "window_index": 0,
+        "sample_start": 1,
+        "sample_end": 100,
+        "attempted": 79,
+        "accepted": 29,
+        "rejected": 50,
+        "duplicates": 21,
+        "acceptance_rate": 0.3670886075949367
+      },
+      {
+        "window_index": 1,
+        "sample_start": 101,
+        "sample_end": 200,
+        "attempted": 70,
+        "accepted": 33,
+        "rejected": 37,
+        "duplicates": 30,
+        "acceptance_rate": 0.4714285714285714
+      },
+      {
+        "window_index": 2,
+        "sample_start": 201,
+        "sample_end": 300,
+        "attempted": 76,
+        "accepted": 35,
+        "rejected": 41,
+        "duplicates": 24,
+        "acceptance_rate": 0.4605263157894737
+      },
+      {
+        "window_index": 3,
+        "sample_start": 301,
+        "sample_end": 400,
+        "attempted": 83,
+        "accepted": 38,
+        "rejected": 45,
+        "duplicates": 17,
+        "acceptance_rate": 0.4578313253012048
+      }
+    ]
+  }
+}

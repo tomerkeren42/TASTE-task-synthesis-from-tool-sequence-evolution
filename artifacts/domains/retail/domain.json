@@ -1,0 +1,36 @@
+{
+    "order_statuses": [
+        "pending", "processed", "pending (item modified)",
+        "delivered", "cancelled", "exchange requested", "return requested"
+    ],
+    "payment_sources": ["credit_card", "gift_card", "paypal"],
+    "one_per_order_actions": [
+        "modify_pending_order_items",
+        "exchange_delivered_order_items",
+        "return_delivered_order_items"
+    ],
+    "cancel_reasons": ["no longer needed", "ordered by mistake"],
+    "db_entity_types": ["users", "products", "orders"],
+    "policy_file": "policy.md",
+    "data_model_module": "tau2.domains.retail.data_model",
+    "db_class": "RetailDB",
+    "environment_module": "tau2.domains.retail.environment",
+    "environment_function": "get_environment",
+    "action_group_map": {
+        "find_user_id_by_email": "find",
+        "find_user_id_by_name_zip": "find",
+        "get_order_details": "get",
+        "get_product_details": "get",
+        "get_user_details": "get",
+        "list_all_product_types": "list",
+        "modify_pending_order_address": "modify_order",
+        "modify_pending_order_items": "modify_order",
+        "modify_pending_order_payment": "modify_order",
+        "modify_user_address": "modify_user",
+        "cancel_pending_order": "cancel",
+        "exchange_delivered_order_items": "delivered",
+        "return_delivered_order_items": "delivered",
+        "calculate": "calculate",
+        "transfer_to_human_agents": "transfer"
+    }
+}

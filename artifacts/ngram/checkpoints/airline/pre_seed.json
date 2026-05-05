@@ -1,0 +1,106 @@
+{
+  "model": {
+    "config": {
+      "n": 3,
+      "vocab": [
+        "book_reservation",
+        "calculate",
+        "cancel_reservation",
+        "get_flight_status",
+        "get_reservation_details",
+        "get_user_details",
+        "list_all_airports",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "send_certificate",
+        "transfer_to_human_agents",
+        "update_reservation_baggages",
+        "update_reservation_flights",
+        "update_reservation_passengers"
+      ],
+      "alpha0": 0.1,
+      "lambda_neg": 1.0,
+      "eps": 1e-12,
+      "bos_token": "|BOS|",
+      "eos_token": "|EOS|"
+    },
+    "counts": {
+      "pos_ngram": {},
+      "pos_ctx": {},
+      "neg_ngram": {},
+      "neg_ctx": {}
+    }
+  },
+  "sampler": {
+    "t": 0,
+    "accepted_set": [],
+    "rejected_set": [],
+    "action_sequence_set": []
+  },
+  "config": {
+    "domain": "airline",
+    "tau0": 3.0,
+    "tau_decay_steps": 1500.0,
+    "positive_weight": 1.0,
+    "negative_weight": 1.0,
+    "ingest_negatives": true,
+    "length_config": {
+      "mode": "from_seed",
+      "reference_source": "original",
+      "min_length": null,
+      "max_length": null,
+      "gaussian_mean": null,
+      "gaussian_std": null,
+      "skew_alpha": 0.0
+    },
+    "available_actions": [
+      "book_reservation",
+      "calculate",
+      "cancel_reservation",
+      "get_reservation_details",
+      "get_user_details",
+      "list_all_airports",
+      "search_direct_flight",
+      "search_onestop_flight",
+      "send_certificate",
+      "transfer_to_human_agents",
+      "update_reservation_baggages",
+      "update_reservation_flights",
+      "update_reservation_passengers",
+      "get_flight_status"
+    ]
+  },
+  "metadata": {
+    "checkpoint_type": "pre_seed",
+    "saved_at": "2026-04-02T07:39:48.271136+00:00",
+    "run_dir": "artifacts/ngram_training_runs/airline_20260402_190036",
+    "config": {
+      "domain": "airline",
+      "num_samples": 3000,
+      "save_every": 100,
+      "max_output_tokens": 32768,
+      "n": 3,
+      "alpha0": 0.1,
+      "lambda_neg": 1.0,
+      "tau0": 3.0,
+      "tau_decay_steps": 1500.0,
+      "positive_weight": 1.0,
+      "negative_weight": 1.0,
+      "ingest_negatives": true,
+      "load_state": null,
+      "seed_tasks": null,
+      "resuming": false
+    },
+    "training_progress": {
+      "samples_attempted": 0,
+      "accepted_total": 0,
+      "rejected_total": 0,
+      "duplicate_total": 0,
+      "acceptance_rate_overall": null,
+      "current_tau": 3.0,
+      "t": 0,
+      "accepted_set_size": 0
+    },
+    "window_stats": []
+  }
+}

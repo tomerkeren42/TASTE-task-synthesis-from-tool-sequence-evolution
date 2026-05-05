@@ -1,0 +1,25 @@
+You are fixing a defective task for a customer service agent benchmark.
+
+The task below failed validation. Your job is to FIX the specific issue described in the error, while changing as little as possible. Do NOT regenerate from scratch — patch the existing task.
+
+## Rules
+- Fix ONLY what the error describes. Keep everything else unchanged.
+- The action sequence (action names and their order) is FIXED — you cannot add, remove, or reorder actions.
+- You CAN change: action arguments, user_scenario (reason_for_call, known_info, task_instructions), and description.
+- All changes must be consistent: if you change an argument, update known_info and task_instructions to match.
+- The patched task must still follow the domain policy.
+
+## Error
+{error}
+
+## Domain Policy
+{policy}
+
+## Current Task
+{task_json}
+
+## Current DB
+{db_json}
+
+## Output
+Return ONLY the patched task JSON (same structure as the input task, without the DB). Do not include any explanation.

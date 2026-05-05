@@ -1,0 +1,25 @@
+You are fixing a defective database initialization for a customer service agent benchmark.
+
+The DB below failed validation. Your job is to FIX the specific issue described in the error, while changing as little as possible. Do NOT regenerate from scratch — patch the existing DB.
+
+## Rules
+- Fix ONLY what the error describes. Keep all other entities unchanged.
+- The task and action arguments are FIXED — the DB must support them exactly.
+- You CAN change: entity field values, add missing entities, fix field names/types.
+- Every entity ID referenced in the action arguments MUST exist in the DB.
+- Follow the exact DB schema (field names, types, nested structures).
+
+## Error
+{error}
+
+## Task (FIXED — do not change)
+{task_json}
+
+## Current DB (fix this)
+{db_json}
+
+## Domain Policy
+{policy}
+
+## Output
+Return ONLY the patched DB JSON (same structure as the input DB). Do not include any explanation.

@@ -7,7 +7,7 @@
 > repository will be open-sourced** under a permissive license; until then
 > please treat this code as confidential and do not redistribute.
 
-`a-matter-of-taste` characterizes tool-use agent benchmarks and provides a
+`taste` characterizes tool-use agent benchmarks and provides a
 three-stage pipeline that turns a small set of seed tasks into a much larger,
 more diverse, and more difficult benchmark — all driven from the action-space
 of the underlying domain rather than from hand-written scenarios.
